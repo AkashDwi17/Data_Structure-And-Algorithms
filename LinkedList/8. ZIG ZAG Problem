@@ -1,0 +1,93 @@
+// Before:
+// 1 -> 2 -> 3 -> 4 -> 5 
+
+// After ZigZag:
+// 1 -> 5 -> 2 -> 4 -> 3 
+
+
+public class Main {
+    public static class Node {
+        int data;
+        Node next;
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static Node head = null;
+    public static Node tail = null;
+
+    // Insert at end
+    public static void addLast(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+            return;
+        }
+        tail.next = newNode;
+        tail = newNode;
+    }
+
+    // Print LinkedList
+    public static void printList(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+    public static void zigZag() {
+        Node slow = head;
+        Node fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node midNode = slow;
+
+        Node prev = null;
+        Node curr = midNode.next;   
+        midNode.next = null;        
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node left = head;
+        Node right = prev;
+        Node nextL, nextR;
+
+        
+        while (left != null && right != null) {
+            nextL = left.next;
+            nextR = right.next;
+
+            left.next = right;
+            right.next = nextL;
+
+            left = nextL;
+            right = nextR;
+        }
+    }
+
+    public static void main(String args[]) {
+        addLast(1);
+        addLast(2);
+        addLast(3);
+        addLast(4);
+        addLast(5);
+
+        System.out.println("Before:");
+        printList(head);
+
+        zigZag();
+
+        System.out.println("After ZigZag:");
+        printList(head);
+    }
+}
