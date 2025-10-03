@@ -1,3 +1,4 @@
+package Sorting_Algorithm_java.Queue;
 import java.util.*;
 public class Queue_using_2_stack{
     public static class Queue{
