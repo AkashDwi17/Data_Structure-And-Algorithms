@@ -35,7 +35,7 @@ public class Pair_Sum {
 // Input: arr = [1, 2, 3, 4, 6], target = 6
 // Output: [1, 3] (2 + 4 = 6, indices start from 0)
 
-
+public static
     public static void main (String args[]){
         int arr[] = {1, 2, 3, 4, 6};
         System.out.println(existPair(arr, 6));
