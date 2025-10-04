@@ -1,0 +1,63 @@
+package LinkedList;
+// Is Palindrome in LL
+
+// Find Mid Node first to seprate 2 parts
+
+    public static Node getMid (Node head){
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    // Check LL is Palindrome
+
+    public static boolean isPalindrome() {
+    if (head == null || head.next == null) {
+        return true;
+    }
+
+    Node midNode = getMid(head);
+
+    // Reverse second half
+    Node prev = null;
+    Node curr = midNode;
+    Node next;
+    while (curr != null) {
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    Node left = head;
+    Node right = prev;
+
+    // Compare nodes
+    while (right != null) {
+        if (left.data != right.data) {
+            return false;
+        }
+        left = left.next;
+        right = right.next;
+    }
+
+    return true;
+}
+
+    
+    public static void main (String args[]){
+        //LinkedList ll = new LinkedList();
+        addLast(1);
+        addLast(2);
+         addLast(1);
+        addLast(2);
+        addLast(1);
+
+        
+        System.out.println(isPalindrome());
+    }
+}

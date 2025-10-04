@@ -30,6 +30,11 @@ public class Pair_Sum {
         return false;
     }
 
+// Problem 1.2: Return Indices of Pair with Given Sum
+
+// Input: arr = [1, 2, 3, 4, 6], target = 6
+// Output: [1, 3] (2 + 4 = 6, indices start from 0)
+
 
     public static void main (String args[]){
         int arr[] = {1, 2, 3, 4, 6};
