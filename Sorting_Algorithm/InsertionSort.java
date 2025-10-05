@@ -1,4 +1,4 @@
-package Sorting_Algorithm_Java;
+package Sorting_Algorithm;
 
 public class InsertionSort {
     // insertion sort
