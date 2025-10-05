@@ -1,4 +1,4 @@
-package Arrays_Practice;
+package Two_Pointer_Approachs;
 
 import java.util.ArrayList;
 import java.util.Arrays;

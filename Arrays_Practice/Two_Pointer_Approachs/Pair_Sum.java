@@ -1,4 +1,4 @@
-package Arrays_Practice;
+package Two_Pointer_Approachs;
 // Two Pointers Technique – Array Problem-Solving
 
 // =========================================================================

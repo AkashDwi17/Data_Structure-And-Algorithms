@@ -1,4 +1,4 @@
-package Arrays_Practice;
+package Two_Pointer_Approachs;
 
 // Problem 1.2: Return Indices of Pair with Given Sum
 

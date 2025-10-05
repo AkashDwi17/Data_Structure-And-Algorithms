@@ -1,3 +1,4 @@
+package Two_Pointer_Approachs;
 import java.util.*;
 
 public class RemovingDuplicates {

@@ -1,4 +1,4 @@
-package Arrays_Practice;
+package Two_Pointer_Approachs;
 
 public class FindIndices1 {
     public static boolean find  (int arr[], int target){
