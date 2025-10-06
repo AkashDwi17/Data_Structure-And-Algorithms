@@ -1,8 +1,7 @@
+package Two_Pointer_Approachs;
+import java.util.Arrays;
 
-import java.util.*;
-
-public class Main {
-
+public class Max2Occurance {
     public static void max2Occ(int arr[]) {
         Arrays.sort(arr); // Must sort first
 
@@ -28,4 +27,3 @@ public class Main {
         max2Occ(arr);
     }
 }
- 
