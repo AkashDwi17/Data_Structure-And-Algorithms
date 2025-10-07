@@ -1,37 +1,35 @@
 import java.util.*;
 
 public class Main {
-    public static void findFirstNegativeNumber (int arr[], int k){
-        List<Integer> list = new ArrayList<>();
-        Deque <Integer> dq = new LinkedList<>();
+    public static List<Integer> countDistinctElements (int arr[], int k){
+        List<Integer> result = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
-        int i = 0, j = 0;
-        while (j<arr.length){
-            if (arr[j] < 0){
-                dq.addLast(j);
-            }
-
-            if ((j-i+1) < k){
-                j++;
-            }
-            else if ((j-i+1) == k){
-                if (!dq.isEmpty()){
-                    list.add(arr[dq.peekFirst()]);
-                }else{
-                    list.add(0);
-                }
-                if (!dq.isEmpty() && dq.peekFirst() == i){
-                    dq.removeFirst();
-                }
-                i++;
-                j++;
-            }
+        for (int i=0; i<k; i++){
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
-        System.out.println(list);
+        result.add (map.size());
+
+
+        // slide
+        for (int i=k; i<arr.length; i++){
+            int leaving = arr[i-k];
+            map.put(leaving, map.get(leaving)-1);
+            if (map.get(leaving) == 0){
+                map.remove(leaving);
+            }
+
+            int entering = arr[i];
+            map.put(entering, map.getOrDefault(entering, 0)+1);
+            result.add(map.size());
+        }
+        return result;
     }
-    public static void main(String[] args) {
-        int arr[] = {12, -1, -7, 8, -15, 30, 16, 28};
-        int k = 3;
-        findFirstNegativeNumber(arr, k);
+
+       public static void main(String[] args) {
+        int arr[] = {1, 2, 1, 3, 4, 2, 3};
+        int k = 4;
+        System.out.println(countDistinctElements(arr, k));
+        
     }
 }
