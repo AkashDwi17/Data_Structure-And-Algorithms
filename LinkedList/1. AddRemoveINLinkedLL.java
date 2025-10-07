@@ -1,7 +1,7 @@
 package LinkedList;
 import java.util.*;
 
-public class Add_Remove_IN_Linked_List {
+public class AddRemoveINLinkedLL {
     public static class Node {
         int data;
         Node next;

@@ -1,5 +1,6 @@
-import java.util.*;
-public class Main{
+package LinkedList;
+
+public class completeLL {
     public static class Node{
         int data;
         Node next;
@@ -178,4 +179,3 @@ public class Main{
         print();
     }
 }
-
