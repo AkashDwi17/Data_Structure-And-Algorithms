@@ -1,31 +1,37 @@
-
 import java.util.*;
-// 5.2 Sort 0s, 1s, 2s (Dutch Flag)
-// Input: [2,0,2,1,1,0]
-// Output: [0,0,1,1,2,2]
+
 public class Main {
-    public static void setZeroInFront (int arr[]){
-        int i = 0;
-        for (int j=0; j<arr.length; j++){
-            if (arr[j] != 0){
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+    public static void findFirstNegativeNumber (int arr[], int k){
+        List<Integer> list = new ArrayList<>();
+        Deque <Integer> dq = new LinkedList<>();
+
+        int i = 0, j = 0;
+        while (j<arr.length){
+            if (arr[j] < 0){
+                dq.addLast(j);
+            }
+
+            if ((j-i+1) < k){
+                j++;
+            }
+            else if ((j-i+1) == k){
+                if (!dq.isEmpty()){
+                    list.add(arr[dq.peekFirst()]);
+                }else{
+                    list.add(0);
+                }
+                if (!dq.isEmpty() && dq.peekFirst() == i){
+                    dq.removeFirst();
+                }
                 i++;
+                j++;
             }
         }
-    }
-    public static void print (int arr[]){
-        for (int i=0; i<arr.length; i++){
-            System.out.print (arr[i]+" ");
-        }
+        System.out.println(list);
     }
     public static void main(String[] args) {
-        int arr[] = {2,0,2,1,1,0};
-        print(arr);
-        setZeroInFront(arr);
-        System.out.println();
-        print(arr);
+        int arr[] = {12, -1, -7, 8, -15, 30, 16, 28};
+        int k = 3;
+        findFirstNegativeNumber(arr, k);
     }
 }
- 
