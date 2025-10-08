@@ -16,7 +16,7 @@ public class QueueUsingLinkedList {
 
         // Is Empty
         public static boolean isEmpty(){
-            return head == null;
+            return head == null && tail == null;
         }
 
         // Add Data
@@ -37,7 +37,12 @@ public class QueueUsingLinkedList {
                 return -1;
             }
             int top = head.data;
-            head = head.next;
+            if (tail == head){
+                tail = head = null;
+            }else{
+                head = head.next;
+            }
+            
             return top;
         }
 
