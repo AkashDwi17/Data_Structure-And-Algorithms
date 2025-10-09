@@ -15,7 +15,7 @@ public class IndiansCoin {
                 while (coins[i] <= amount){
                     countOfCoins ++;
                     ans.add(coins[i]);
-                    amount -= coins[i];
+                    amount -= coins[i]; 
                 }
             }
         }
