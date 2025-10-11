@@ -1,25 +1,74 @@
 import java.util.*;
 public class Main{
-    public static void main (String args[]){
-        int start[] = {1,3,0,5,8,5};
-        int end[] = {2,4,6,7,9,9};
-
-        ArrayList<Integer> list = new ArrayList<>();
-        int maxAct = 0;
-        list.add(0);
-        maxAct = 1;
-        int lastEnd = end[0];
-        
-        for (int i=1; i<end.length; i++){
-            if (start[i] >= lastEnd){
-                maxAct ++;
-                list.add (i);
-                lastEnd = end[i];
+    public static void moveToEnd (int arr[]){
+        int i=arr.length-1;
+        for (int j=arr.length-1; j>=0; j--){
+            if (arr[j] != 0){
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i--;
             }
         }
-        System.out.println(maxAct);
-        for (int i=0; i<list.size(); i++){
-            System.out.println("A"+list.get(i));
+    }
+    public static void print (int arr[]){
+        for (int i=0; i<arr.length; i++){
+            System.out.print (arr[i]+" ");
         }
+        System.out.println();
+    }
+
+    public static void removeDublicateUsingaMapn(int arr[]){
+        HashSet <Integer> set = new HashSet<>();
+        for (int i=0; i<arr.length; i++){
+            set.add(arr[i]);
+        }
+        // for (Integer k : set){
+        //     System.out.print(k+" ");
+        // }
+
+        Integer res [] = set.toArray(new Integer[0]);
+        System.out.println(set);
+    }
+
+    // public static void findAllPairs (int arr[], int si, int ei, int target){
+    //     while (si < ei){
+    //         if (arr[si] + arr[ei] == target){
+    //             System.out.println(si + "," + ei);;
+    //         }
+    //         if (arr[si] + arr[ei] < target){
+    //             si ++;
+    //         }else{
+    //             ei --;
+    //         }
+    //     }
+    //     System.out.println("No match");
+    // }
+
+    public static List<List<Integer>> findAllPairs (int arr[], int tar){
+        List <List<Integer>> result = new ArrayList<>();
+        int si = 0;
+        int ei = arr.length-1;
+
+        while (si < ei){
+            List<Integer> ans = new ArrayList<>();
+            if (arr[si] + arr[ei] == tar){
+                ans.add(si);
+                ans.add(ei);
+                result.add(ans);
+            }
+            if (arr[si] + arr[ei] < tar){
+                si ++;
+            }else{
+                ei --;
+            }
+        }
+        return result;
+    }
+    public static void main (String args[]){
+       int arr[] = {1,2,3,4,5,6,7};
+       System.out.println(findAllPairs(arr, 5));
+        
     }
 }
+

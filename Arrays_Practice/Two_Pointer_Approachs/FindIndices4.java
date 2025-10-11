@@ -1,5 +1,9 @@
 package Two_Pointer_Approachs;
 
+// int arr[] = {2, 4, 3, 5, 7, -1, 0};
+//         int target = 6;
+//         output [[-1, 7], [2, 4], [3, 3]]
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +34,7 @@ public class FindIndices4 {
     public static void main (String args[]){
         int arr[] = {2, 4, 3, 5, 7, -1, 0};
         int target = 6;
+        // output [[-1, 7], [2, 4], [3, 3]]
         List<List<Integer>> pairs = uniquePairSum(arr, target);
         System.out.println(pairs);
     }

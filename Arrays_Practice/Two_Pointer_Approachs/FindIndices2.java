@@ -16,7 +16,7 @@ public class FindIndices2 {
             if (arr[si] + arr[ei] == target){
                 ans[0] = arr[si];
                 ans[1] = arr[ei];
-                return ans;
+                // return ans;
             }
             if (arr[si] + arr[ei] < target){
                 si++;
@@ -24,7 +24,8 @@ public class FindIndices2 {
                 ei --;
             }
         }
-        return new int[]{};
+        // return new int[]{};
+        return ans;
     } 
 
     public static void main(String[] args) {

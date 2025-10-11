@@ -4,17 +4,20 @@ import java.util.*;
 public class RemovingDuplicates {
     public static void removeDublicateUsingaMap(int arr[]){
         HashSet <Integer> set = new HashSet<>();
+        int k = 0;
         for (int i=0; i<arr.length; i++){
             set.add (arr[i]);
         }
 
         // Case:1 o/p 1 2 3
 
-        // for (Integer val : set){
-        //     System.out.print(val);
-        // }
-
+        for (Integer val : set){
+            // System.out.print(val);
+            arr[k] =  val;
+        }
+        
         // Case: 2 o/p [1, 2, 3]
+        
         Integer result [] = set.toArray(new Integer[0]);
         
         System.out.print(Arrays.toString(result));
