@@ -4,7 +4,7 @@ package SlidingWindow;
 // Input: arr = [2, 1, 5, 1, 3, 2], k = 3
 // Output: 9 → (5+1+3)
 
-public class FixedSizeWindow {
+public class MaxSubArrSum {
     
     public static int maxSubArrSum (int arr[], int k){
         int sum = 0;
