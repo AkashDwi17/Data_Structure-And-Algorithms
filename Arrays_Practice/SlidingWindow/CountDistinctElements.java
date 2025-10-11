@@ -18,16 +18,15 @@ public class CountDistinctElements {
 
         // Step 2: Slide the window
         for (int i = k; i < arr.length; i++) {
-            int leaving = arr[i - k]; // element leaving the window
-            map.put(leaving, map.get(leaving) - 1);
-            if (map.get(leaving) == 0) {
-                map.remove(leaving); // remove if count is 0
+            // int leaving = arr[i - k]; // element leaving the window
+
+            map.put(arr[i - k], map.get(arr[i - k]) - 1);
+            if (map.get(arr[i - k]) == 0) {
+                map.remove(arr[i - k]); // remove if count is 0
             }
 
-            int entering = arr[i]; // element entering the window
-            map.put(entering, map.getOrDefault(entering, 0) + 1);
-
-            result.add(map.size());
+            map.put (arr[i], map.getOrDefault (arr[i], 0)+1);
+            result.add (map.size());
         }
 
         return result;
