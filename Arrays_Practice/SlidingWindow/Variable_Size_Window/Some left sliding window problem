@@ -1,0 +1,36 @@
+2.9 Fruit Into Baskets (Longest Subarray with At Most 2 Types)
+📌 Company: Google
+Input: [1,2,1,2,3]
+Output: 4
+
+2.10 Count Substrings Containing All 3 Characters (‘a’,‘b’,‘c’)
+📌 Contest: LeetCode Weekly
+Input: "abcabc"
+Output: 10
+
+🔹 3. Tricky / Rare Contest Problems
+
+3.1 Count Occurrences of Anagrams (Pattern Search)
+📌 Company: Infosys, Capgemini
+Input: s = "forxxorfxdofr", pat = "for"
+Output: 3
+
+3.2 Longest Substring with Even Count of Vowels
+📌 Contest: Codeforces
+Input: "eleetminicoworoep"
+Output: 13
+
+3.3 Count Subarrays with Sum Divisible by K
+📌 Company: Amazon
+Input: [4,5,0,-2,-3,1], k = 5
+Output: 7
+
+3.4 Minimum Window to Make String Contain Another
+📌 Company: Adobe
+Input: s = "this is a test string", t = "tist"
+Output: "t stri"
+
+3.5 Longest Substring with At Most 1 Difference Between Char Counts
+📌 Contest: Hackerrank
+Input: "aabbccdde"
+Output: 5 ("aabbc")
