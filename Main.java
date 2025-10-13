@@ -1,24 +1,20 @@
 import java.util.*;
 public class Main {
-    public static List <Integer> master (int arr[]){
-        List <Integer> list = new ArrayList<>();
-        int n = arr.length;
-        list.add (arr[n-1]);
-
-        int max = arr[n-1];
-
-        for (int i=arr.length-2; i>=0; i--){
-            if (arr[i] > max){
-                max = arr[i];
-                list.add (arr[i]);
+    public static boolean summEqualToZero (int arr[], int k){
+        HashSet <Integer> set = new HashSet<>();
+        int sum = 0;
+        for (int i=0; i<arr.length; i++){
+            sum += arr[i];
+            if (set.contains(sum)){
+                return true;
+            }else{
+                set.add(sum);
             }
         }
-        return list;
+        return false;
     }
-    public static void main (String args[]){
-        int arr[] = {6,3,5,2,4,0};  
-        System.out.println(master(arr));
+    public  static void main (String args[]){
+        int arr[] = {4,2,-3,1,6};
+        System.out.println(summEqualToZero(arr, 0));
     }
 }
-
-
