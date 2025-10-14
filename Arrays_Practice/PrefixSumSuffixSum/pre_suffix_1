@@ -1,0 +1,198 @@
+PREFIX SUM / SUFFIX SUM – FULL PRACTICE SHEET
+🧩 3.1 Prefix Sum Basics (Easy Level)
+🧠 Problem 1: Construct Prefix Sum Array
+
+Company: TCS, Infosys
+Input: arr = [1, 2, 3, 4]
+Output: prefix = [1, 3, 6, 10]
+Idea: prefix[i] = prefix[i-1] + arr[i]
+
+🧠 Problem 2: Range Sum Query
+
+Company: TCS, Accenture
+Statement: Given an array and queries (L, R), find sum of elements from L to R using prefix sum.
+Input: arr = [1, 2, 3, 4, 5], query = (2, 4)
+Output: 9 (2 + 3 + 4 = 9)
+
+🧠 Problem 3: Running Sum of 1D Array (LeetCode 1480)
+
+Company: Amazon
+Input: nums = [1,2,3,4]
+Output: [1,3,6,10]
+
+🧠 Problem 4: Find Pivot Index (LeetCode 724)
+
+Company: Google, Amazon
+Input: [1,7,3,6,5,6]
+Output: 3
+Explanation: Left sum (11) = Right sum (11) at index 3.
+
+🧠 Problem 5: Equilibrium Index
+
+Company: TCS, Accenture, Infosys
+Statement: Find an index such that sum of left part = sum of right part.
+Input: [1,3,5,2,2]
+Output: 2
+
+⚙️ 3.2 Subarray Sum Based (Medium Level)
+🧠 Problem 6: Subarray Sum Equals K (LeetCode 560)
+
+Company: Amazon, Flipkart
+Input: [1,1,1], k = 2
+Output: 2
+Explanation: Subarrays = [1,1] at (0,1) and (1,2)
+
+🧠 Problem 7: Longest Subarray with Sum K
+
+Company: Amazon, Adobe
+Input: [10,5,2,7,1,9], K = 15
+Output: 4 (Subarray [5,2,7,1])
+
+🧠 Problem 8: Subarray with Sum 0
+
+Company: Wipro, Infosys, TCS
+Input: [4,2,-3,1,6]
+Output: True ([2,-3,1])
+
+🧠 Problem 9: Subarray with Given XOR (InterviewBit / Amazon)
+
+Input: arr = [4,2,2,6,4], K = 6
+Output: 4
+Explanation: 4 subarrays have XOR = 6
+
+🧠 Problem 10: Count Subarrays Divisible by K (LeetCode 974)
+
+Company: Google, Amazon
+Input: [4,5,0,-2,-3,1], K=5
+Output: 7
+
+🚀 3.3 Range Update / Difference Array Technique
+🧠 Problem 11: Range Update Query
+
+Company: Microsoft, Amazon
+Statement: You have an array of zeros and queries of form (l,r,val).
+Add val to each element in [l,r]. Return final array.
+Input: n=5, queries=[[1,3,2],[2,4,3]]
+Output: [0,2,5,5,3]
+
+🧠 Problem 12: Corporate Flight Bookings (LeetCode 1109)
+
+Company: Google
+Input: bookings=[[1,2,10],[2,3,20],[2,5,25]], n=5
+Output: [10,55,45,25,25]
+
+🧠 Problem 13: Car Pooling (LeetCode 1094)
+
+Company: Amazon, Microsoft
+Statement: Each trip adds passengers between start and end stops.
+Return whether capacity is exceeded.
+Input: trips=[[2,1,5],[3,3,7]], capacity=4
+Output: False
+
+🧠 Problem 14: Range Sum Query – Immutable (LeetCode 303)
+
+Company: TCS, Wipro
+Input: nums=[-2,0,3,-5,2,-1], queries=[[0,2],[2,5],[0,5]]
+Output: [1,-1,-3]
+
+🧠 Problem 15: Range Sum Query 2D (LeetCode 304)
+
+Company: Amazon, Meta
+Statement: Find sum of rectangle (r1,c1,r2,c2) in 2D matrix using prefix sum.
+Input:
+Matrix = [[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]],
+Query = (2,1,4,3)
+Output: 8
+
+🔥 3.4 Prefix + Suffix Combo (Advanced)
+🧠 Problem 16: Maximum Sum Circular Subarray (LeetCode 918)
+
+Company: Amazon
+Input: [1,-2,3,-2]
+Output: 3
+
+🧠 Problem 17: Maximum Sum Subarray After One Deletion (LeetCode 1186)
+
+Input: [1,-2,0,3]
+Output: 4
+Explanation: Delete -2 → sum = 1+0+3=4
+
+🧠 Problem 18: Maximum Average Subarray I (LeetCode 643)
+
+Company: Google, Amazon
+Input: [1,12,-5,-6,50,3], k=4
+Output: 12.75 (Subarray [12,-5,-6,50])
+
+🧠 Problem 19: Equal Prefix and Suffix Sum
+
+Company: Google
+Input: [2,3,4,1,4,5]
+Output: 3 (since prefix [2,3,4] = suffix [1,4,5])
+
+🧠 Problem 20: Find Maximum Prefix Sum ≤ Target
+
+Statement: Given prefix array and a target, find largest prefix sum ≤ target.
+Input: prefix = [1,3,6,10,15], target = 9
+Output: 6
+
+🧮 3.5 Contest / Company Challenge Patterns
+🧠 Problem 21: Equilibrium Point (GFG / TCS / Accenture)
+
+Input: [1,3,5,2,2]
+Output: 3rd index (1-based = 3)
+
+🧠 Problem 22: Binary Subarray with Sum (LeetCode 930)
+
+Company: Google, Amazon
+Input: [1,0,1,0,1], goal=2
+Output: 4
+
+🧠 Problem 23: Find All Subarrays with Equal Number of 0s and 1s
+
+Company: Amazon
+Input: [0,0,1,0,1,1,0]
+Output: 8
+
+🧠 Problem 24: Ways to Split Array into 3 Equal Sum Parts (LeetCode 1013)
+
+Company: Amazon
+Input: [0,2,1,-6,6,-7,9,1,2,0,1]
+Output: True
+
+🧠 Problem 25: Sum of All Odd Length Subarrays (LeetCode 1588)
+
+Company: Google
+Input: [1,4,2,5,3]
+Output: 58
+
+🧠 Problem 26: Minimum Value to Get Positive Step-by-Step Sum (LeetCode 1413)
+
+Company: Amazon
+Input: [-3,2,-3,4,2]
+Output: 5
+
+🧠 Problem 27: Balanced Array Split
+
+Statement: Split array into two equal halves such that difference of sum is minimum.
+Input: [1,2,3,4,5,6]
+Output: Left=[1,2,3,4], Right=[5,6], Min Diff=3
+
+🧾 3.6 Suffix Sum Focused Problems
+🧠 Problem 28: Construct Suffix Sum Array
+
+Input: [1,2,3,4]
+Output: [10,9,7,4]
+
+🧠 Problem 29: Find Index Where Prefix == Suffix
+
+Input: [2,4,1,6,5,9,7]
+Output: 3
+
+🧠 Problem 30: Maximum Suffix Difference
+
+Statement: Find max difference between suffix and prefix sums.
+Input: [1,2,3,4,5]
+Output: 9 (suffix[1..4] - prefix[0..3])
+
+✅ These 30 problems cover all company patterns around Prefix / Suffix / Difference / Range / Subarray Sum
+Once you practice all of them → you master 90% of interview prefix problems.
