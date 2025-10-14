@@ -1,5 +1,12 @@
-import java.util.*;
-public class Main{
+package PrefixSumSuffixSum;
+
+// Problem 17: Maximum Sum Subarray After One Deletion (LeetCode 1186)
+
+// Input: [1,-2,0,3]
+// Output: 4
+// Explanation: Delete -2 → sum = 1+0+3=4
+
+public class MaximumSumSubarrayAfterOneDeletion {
     public static int maximumSum(int[] arr) {
         int n = arr.length;
         int noDelete = arr[0];     // max subarray sum without deletion
