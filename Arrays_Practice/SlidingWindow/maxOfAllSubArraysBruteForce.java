@@ -1,9 +1,8 @@
+package SlidingWindow;
 import java.util.*;
-
-public class Main {
-
     // Input: arr = [1,3,-1,-3,5,3,6,7], k = 3
     // Output: [3,3,5,5,6,7]
+public class maxOfAllSubArraysBruteForce {
     public static List<Integer> maxOfAllSubarrays(int arr[], int k) {
         List<Integer> list = new ArrayList<>();
 
@@ -16,10 +15,15 @@ public class Main {
         }
         return list;
     }
-
     public static void main(String[] args) {
         int[] arr = {1, 3, -1, -3, 5, 3, 6, 7};
         int k = 3;
         System.out.println(maxOfAllSubarrays(arr, k)); // [3, 3, 5, 5, 6, 7]
     }
 }
+
+
+    
+
+    
+
