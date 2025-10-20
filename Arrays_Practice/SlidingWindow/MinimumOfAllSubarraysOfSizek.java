@@ -18,11 +18,6 @@ public class MinimumOfAllSubarraysOfSizek {
             }
 
             //  Remove smaller elements (they’ll never be the max)
-            // while (!dq.isEmpty() && arr[dq.peekLast()] <= arr[i]) {
-            //     dq.removeLast();
-            // }
-
-            //  Remove smaller elements (they’ll never be the max)
             while (!dq.isEmpty() && arr[dq.peekLast()] >= arr[i]) {
                 dq.removeLast();
             }
@@ -43,7 +38,7 @@ public class MinimumOfAllSubarraysOfSizek {
 
     public static void main(String[] args) {
         int arr[] = {2, 1, 3, 4, 6, 3, 8, 9, 10, 12, 56};
-        int k = 3;
+        int k = 4;
 
         System.out.println(minimumOfAllSubarraysOfSize(arr, k));
     }

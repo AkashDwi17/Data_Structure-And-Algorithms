@@ -23,11 +23,6 @@ public class longestSubstringwithAtMostKDistinctCharacters {
             char c = s.charAt(right);
 
             // Add character to map (or increase its count)
-            // if (map.containsKey(c)) {
-            //     map.put(c, map.get(c) + 1);
-            // } else {
-            //     map.put(c, 1);
-            // }
             map.put (c, map.getOrDefault(c, 0)+1);
 
             // If more than k distinct characters, shrink from left

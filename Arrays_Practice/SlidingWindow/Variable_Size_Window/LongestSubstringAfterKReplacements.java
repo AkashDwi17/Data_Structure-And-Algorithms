@@ -13,7 +13,7 @@ public class LongestSubstringAfterKReplacements {
         int maxFreq = 0;
         int[] freq = new int[26]; // for uppercase letters only (A-Z)
 
-        while (j < s.length()) {
+        while (j < s.length()) { 
             // include current character
             char ch = s.charAt(j);
             freq[ch - 'A']++;
