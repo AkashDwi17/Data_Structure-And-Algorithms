@@ -1,7 +1,6 @@
 package BinaryTree;
-import java.util.*;
 
-public class _6KthLevelOfTree {
+public class _7LowestCommon_Anchestor {
     public static class Node {
         int data;
         Node left;
@@ -12,19 +11,25 @@ public class _6KthLevelOfTree {
             this.right = null;
         }
     }
-    public static void kLevel (Node root, int level, int k){
-        if (root == null){
-            return;
+
+    public static Node lca (Node root, int n1, int n2){
+        if (root == null || root.data == n1 || root.data == n2){
+            return root;
         }
-        if (level == k){
-            System.out.println(root.data+" ");
-            return;
+        Node leftLca = lca (root.left, n1, n2);
+        Node rightLca = lca (root.right, n1, n2);
+        
+        if (leftLca == null){
+            return rightLca;
         }
-        kLevel (root.left, level+1, k);
-        kLevel (root.right, level+1,  k);
+        if (rightLca == null){
+            return leftLca;
+        }
+        return root;
     }
+
     public static void main(String[] args) {
-         // Manually creating the same tree:
+        // Manually creating the same tree:
         //         1
         //       /   \
         //      2     3
@@ -39,7 +44,7 @@ public class _6KthLevelOfTree {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
-        kLevel(root, 0, 2);
-        kLevel(root, 1, 3);
+
+        System.out.println(lca(root, 4, 5).data);
     }
 }
