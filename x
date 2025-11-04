@@ -9,3 +9,5 @@ cpu sheduling algorithm
 
 Priority Scheduling
 Memory Management
+Frames
+Paging

@@ -1,4 +1,6 @@
 import java.util.*;
+// package LinkedList;
+
 public class _11CompleteLL{
     public static class Node{
     int data;
@@ -10,6 +12,8 @@ public class _11CompleteLL{
 }
 public static Node head;
 public static Node tail;
+
+// Add First
 
 public static void addFirst (int data){
     Node newNode = new Node (data);
@@ -32,6 +36,8 @@ public static void addLast (int data){
     tail = newNode;
 }
 
+// Print LL
+
 public static void print (){
     Node temp = head;
     if (head == null){
@@ -44,6 +50,7 @@ public static void print (){
     System.out.println();
 }
 
+// Remove First From LL
 public static int removeFirst (){
     if (head == null){
         return -1;
@@ -52,6 +59,8 @@ public static int removeFirst (){
     head = head.next;
     return top;
 }
+
+// Add Middle in LL
 
 public static void addMiddle (int data, int idx){
     Node newNode = new Node (data);
@@ -68,6 +77,8 @@ public static void addMiddle (int data, int idx){
     temp.next = newNode;
 }
 
+// Reverse LL
+
 public static void reverseLL (){
     Node prev = null;
     Node curr = head;
@@ -80,6 +91,8 @@ public static void reverseLL (){
     }
     head = prev;
 }
+
+// Delete Nth Node From End
 
 public static void deleteNthFromEnd (int n){
     int sz = 0;
@@ -99,6 +112,7 @@ public static void deleteNthFromEnd (int n){
 }
 
 // Find Mid Node
+
 public static void findMid (Node head){
     Node slow = head;
     Node fast = head;
@@ -108,6 +122,9 @@ public static void findMid (Node head){
     }
     System.out.println(slow);
 }
+
+// Check Palindrom
+
     public static void main (String args[]){
         addFirst(1);
         addLast(2);
