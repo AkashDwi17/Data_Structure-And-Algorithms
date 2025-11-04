@@ -137,15 +137,67 @@ public static boolean isPalindrome (){
     }
     return true;
 }
-    public static void main (String args[]){
-        addLast(1);
-        addLast(2);
-         addLast(1);
-        addLast(2);
-        addLast(3);
-        print();
-        
-        System.out.println(isPalindrome());
 
+// Detect cycle
+public static boolean detectCycle (){
+    if (head == null || head.next == null){
+        return false;
+    }
+    Node slow = head;
+    Node fast = head;
+
+    while (fast != null && fast.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow == fast){
+            return true;
+        }
+    }
+   return false;
+}
+
+// Remove cycle
+public static void removeCycle (){
+    boolean isCycle = false;
+    Node slow = head;
+    Node fast = head;
+    while (fast != null && fast.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+        if (slow == fast){
+            isCycle = true;
+            break;
+        }
+    }
+    if (isCycle == false){
+        return;
+    }
+    Node prev = null;
+    slow = head;
+    while (slow != fast){
+        prev = fast;
+        slow = slow.next;
+        // fast =fast.next;
+        slow = slow.next;
+    }
+    prev.next = null;
+
+
+}
+
+    public static void main (String args[]){
+        head = new Node(1);
+        Node temp = new Node(5);
+        head.next = temp;
+        head.next.next = new Node(3);
+        head.next.next.next = temp;
+        
+        System.out.println(detectCycle());
+
+        removeCycle();
+        System.out.println("___________________");
+        System.out.println(detectCycle());
+
+        System.out.println("_____________________");
     }
 }
