@@ -1,6 +1,6 @@
 package Sorting_Algorithm;
 
-package Sorting_Algorithm_Java;
+// package Sorting_Algorithm_Java;
 
 public class BubbleSort {
     public static void print (int arr[]){

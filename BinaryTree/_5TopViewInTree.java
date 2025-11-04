@@ -28,6 +28,7 @@ public class _5TopViewInTree {
         int min = 0;
         int max = 0;
         q.add (new Info (root, 0));
+        
         while (!q.isEmpty()){
             Info curr = q.remove();
             if (curr == null){
