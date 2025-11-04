@@ -5,3 +5,7 @@ cpu sheduling algorithm
   cpu reflex
      service points and
      response time
+
+
+Priority Scheduling
+Memory Management
