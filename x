@@ -11,3 +11,4 @@ Priority Scheduling
 Memory Management
 Frames
 Paging
+Segmentation
