@@ -48,7 +48,7 @@ public class ZigZag {
             fast = fast.next.next;
         }
         Node midNode = slow;
-
+        
         Node prev = null;
         Node curr = midNode.next;   
         midNode.next = null;        
