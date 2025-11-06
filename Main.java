@@ -196,7 +196,7 @@ public static void removeCycle (){
         }
         Node midNode = slow;
 
-    Node prev = head;
+    Node prev = null;
     Node curr = midNode.next;
     midNode.next = null;
     Node next;
@@ -207,7 +207,7 @@ public static void removeCycle (){
         curr = next;
     }
     Node left = head;
-    Node right = tail;
+    Node right = prev;
     Node nextL;
     Node nextR;
     

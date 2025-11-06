@@ -181,23 +181,59 @@ public static void removeCycle (){
         slow = slow.next;
     }
     prev.next = null;
+}
+
+// Zig Zag Problem
 
 
+
+    public static void zigZag() {
+        Node slow = head;
+        Node fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node midNode = slow;
+
+    Node prev = null;
+    Node curr = midNode.next;
+    midNode.next = null;
+    Node next;
+    while (curr != null){
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    Node left = head;
+    Node right = prev;
+    Node nextL;
+    Node nextR;
+    
+    while (left != null && right != null) {
+        nextL = left.next;
+        nextR = right.next;
+        left.next = right;
+        right.next = nextL;
+        left = nextL;
+        right = nextR;
+    }
 }
 
     public static void main (String args[]){
-        head = new Node(1);
-        Node temp = new Node(5);
-        head.next = temp;
-        head.next.next = new Node(3);
-        head.next.next.next = temp;
-        
-        System.out.println(detectCycle());
+        addLast(1);
+        addLast(2);
+        addLast(3);
+        addLast(4);
+        addLast(5);
 
-        removeCycle();
-        System.out.println("___________________");
-        System.out.println(detectCycle());
+        System.out.println("Before:");
+        print();
 
-        System.out.println("_____________________");
+        zigZag();
+
+        System.out.println("After ZigZag:");
+        print();
     }
 }
