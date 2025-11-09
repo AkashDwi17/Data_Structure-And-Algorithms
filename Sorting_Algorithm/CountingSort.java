@@ -1,5 +1,6 @@
 package Sorting_Algorithm;
 import java.util.*;
+
 public class CountingSort {
     public static void countingSort (int arr[]){
         int largest = Integer.MIN_VALUE;
@@ -30,6 +31,7 @@ public class CountingSort {
         int arr[] = {5,4,1,3,2};
         print(arr);
         countingSort(arr);
+        System.out.println();
         print(arr);
     }
 }
