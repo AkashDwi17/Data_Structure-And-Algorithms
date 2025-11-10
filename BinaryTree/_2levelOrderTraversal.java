@@ -32,10 +32,9 @@ public class _2levelOrderTraversal {
             if (currNode == null){
                 System.out.println();
                 if (q.isEmpty()){
-                    break;
-                } else {
                     q.add(null);
-                }
+                    break;
+                } 
             } else {
                 System.out.print(currNode.data + " ");
                 if (currNode.left != null){
