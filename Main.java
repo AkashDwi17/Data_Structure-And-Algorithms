@@ -12,20 +12,26 @@ public class Main{
         }
     }
 
-    public static int transFormToSumTree (Node root){
+    public static Node insert (Node root, int val){
         if (root == null){
-            return 0;
+            root = new Node (val);
+            return root;
         }
-        int leftChild = transFormToSumTree(root.left);
-        int rightChild = transFormToSumTree(root.right);
+        if (root.data > val){
+            root.left = insert (root.left, val);
+        }else{
+            root.right = insert (root.right, val);
+        }
+        return root;
+    }
 
-        int data = root.data;
-        int newLeft = root.left ==  null ? 0 : root.left.data;
-        int newRight = root.right == null ? 0 : root.right.data;
-
-        root.data = newLeft + leftChild + newRight + rightChild;
-
-        return data;
+    public static void inOrder (Node root){
+        if (root == null){
+            return;
+        }
+        inOrder (root.left);
+        System.out.print (root.data+" ");
+        inOrder (root.right);
     }
     public static void main (String args[]){
 
