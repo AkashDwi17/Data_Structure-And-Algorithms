@@ -1,6 +1,4 @@
 import java.util.*;
-
-import BinaryTree._1createBinaryTree1.BinaryTree;
 public class Main {
     public static class Node {
         int data;
@@ -12,100 +10,60 @@ public class Main {
             this.right = null;
         }
     }
-    public static class BinaryTree{
-        static int idx = -1;
-        public static Node buildTree (int nodes[]){
-            idx ++;
-            if (nodes[idx] == -1){
-                return null;
-            }
-            Node newNode = new Node (nodes[idx]);
-            newNode.left = buildTree(nodes);
-            newNode.right = buildTree(nodes);
-            return newNode;
+
+    public static Node lca (Node root, int n1, int n2){
+        if (root == null || root.data == n1 || root.data == n2){
+            return root;
+        }
+        Node leftLca = lca (root.left, n1, n2);
+        Node rightLca = lca (root.right, n1, n2);
+        
+        if (leftLca == null){
+            return rightLca;
+        }
+        if (rightLca == null){
+            return leftLca;
+        }
+        return root;
+    }
+    
+    public static int lcaDist (Node root, int n){
+        if (root == null){
+            return -1;
+        }
+        if (root.data == n){
+            return 0;
+        }
+        int leftDist = lcaDist(root.left, n);
+        int rightDist = lcaDist(root.right, n);
+
+        if (leftDist == -1 && rightDist == -1){
+            return -1;
+        }
+        if (leftDist == -1){
+            return rightDist + 1;  
+        }else{
+            return leftDist+1;
         }
     }
-
-    // Print level of trees
-
-    // PreOrder
-    public static void preOrder(Node root){
-        if (root == null){
-            return;
-        }
-        System.out.print(root.data+" ");
-        preOrder(root.left);
-        preOrder(root.right);
-    }
-
-    // InOrder
-    public static void inOrder(Node root){
-        if (root == null){
-            return;
-        }
-        inOrder(root.left);
-        System.out.print (root.data);
-        inOrder(root.right);
-    }
-
-    // PostOrder
-    public static void postOrder(Node root){
-        if (root == null){
-            return;
-        }
-        postOrder(root.left);
-        postOrder(root.right);
-        System.out.print(root.data);
-    }
-
-    // LevelOrder
-    public static void levelOrder (Node root){
-        if (root == null){
-            return;
-        }
-        Queue <Node> q = new LinkedList<>();
-        q.add (root);
-        q.add (null);
-
-        while (!q.isEmpty()) {
-            Node currNode = q.remove();
-            if (currNode == null){
-                System.out.println();
-                if (q.isEmpty()){
-                    break;
-                }
-                q.add(null);
-            }
-            else{
-                System.out.print(currNode.data+" ");
-                if (currNode.left != null){
-                    q.add(currNode.left);
-                }
-                if (currNode.right != null){
-                    q.add(currNode.right);
-                }
-            }
-        }
+    public static int minDist (Node root, int n1, int n2){
+        Node lca = lca(root, n1, n2);
+        int dist1 = lcaDist(root, n1);
+        int dist2 = lcaDist(root, n2);
+ 
+        return dist1 + dist2;
     }
     public static void main (String args[]){
-        int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,6,-1,-1,7,-1,-1};
-        BinaryTree tree = new BinaryTree();
-        Node root = tree.buildTree(nodes);
-        System.out.println(root.data);
+Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
 
-        System.out.println("PreOrder ");
-        preOrder(root);
-        System.out.println();
-        System.out.println("InOrder ");
-        inOrder(root);
-                System.out.println();
-
-        System.out.println("PostOrder ");
-        postOrder(root);
-                System.out.println();
-
-        System.out.println("LevelOrder ");
-        levelOrder(root);
-
+        int n1 = 4; 
+        int n2 = 6;
+        System.out.println(minDist(root, n1, n2));
     }
 }

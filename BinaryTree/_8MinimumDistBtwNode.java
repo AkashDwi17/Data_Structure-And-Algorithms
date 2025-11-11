@@ -1,6 +1,16 @@
 package BinaryTree;
 
 public class _8MinimumDistBtwNode {
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
+        public Node (int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
     public static Node lca2 (Node root, int n1, int n2){
         if (root == null || root.data == n1 || root.data == n2){
             return root;
@@ -31,7 +41,7 @@ public class _8MinimumDistBtwNode {
             return -1;
         }
         else if (leftDist == -1){
-            return rightDist + 1;
+            return rightDist + 1; // + 1 means root node
         }
         else{
             return leftDist + 1;

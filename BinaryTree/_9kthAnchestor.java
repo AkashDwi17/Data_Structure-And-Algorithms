@@ -1,6 +1,16 @@
 package BinaryTree;
 
 public class _9kthAnchestor {
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
+        public Node (int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
     public static int kthAnchestor (Node root, int n, int k){
         if (root == null){
             return -1;
