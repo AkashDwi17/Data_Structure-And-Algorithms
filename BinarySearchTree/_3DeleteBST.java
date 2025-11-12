@@ -29,6 +29,7 @@ public class _3DeleteBST {
 
     // Delete a node from BST
     public static Node deleteNode(Node root, int val){
+        
         if (root == null) return null;
 
         if (root.data < val){
