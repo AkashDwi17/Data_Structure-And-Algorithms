@@ -1,14 +1,19 @@
-cpu sheduling algorithm
-  first come first serve
-  roundrobbin 
-  earliest deadline first
-  cpu reflex
-     service points and
-     response time
+public class Main {
+    public static void main(String args[]) {
+        int largest = Integer.MIN_VALUE;
+        int secLargest = Integer.MIN_VALUE;
 
+        int arr[] = {1, 2, 3, 4, 4, 4};
 
-Priority Scheduling
-Memory Management
-Frames
-Paging
-Segmentation
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > largest) {
+                secLargest = largest;
+                largest = arr[i];
+            } else if (arr[i] < largest && arr[i] > secLargest) {
+                secLargest = arr[i];
+            }
+        }
+
+        System.out.println("Second Largest: " + secLargest);
+    }
+}

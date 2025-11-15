@@ -1,5 +1,6 @@
-import java.util.*;
-public class Main {
+    import java.util.*;
+    
+    public class SecondLargest {
     public static void main (String args[]){
         int largest = Integer.MIN_VALUE;
         int secLargest = Integer.MIN_VALUE;
@@ -18,3 +19,4 @@ public class Main {
         System.out.println(secLargest);
     }
 }
+
