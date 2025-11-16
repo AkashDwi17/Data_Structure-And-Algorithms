@@ -31,9 +31,14 @@ public class QuickSort {
             }
         }
         i++;
-        int temp = pivoit;
-        arr[ei] = arr[i];
-        arr[i] = temp;
+        // int temp = pivoit;
+        // arr[ei] = arr[i];
+        // arr[i] = temp;
+
+        int temp = arr[i];
+        arr[i] = arr[ei];
+        arr[ei] = temp;
+
         return i;
     }
 
