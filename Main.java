@@ -1,19 +1,18 @@
 import java.util.*;
-public class Main {
-    public static void findSubsets(String str, StringBuilder sb , int i){
-        if  (i == str.length()){
-            if (sb.length() == 0){
-                System.out.println("null");
-            }
-            System.out.println (sb.toString ());
+public class Main{
+    public static void findPermutation (String str, String ans){
+        if (str.length() == 0){
+            System.out.print (ans+" ");
             return;
         }
-        findSubsets(str, sb.append(str.charAt(i)), i+1);
-        sb.deleteCharAt(sb.length()-1);
-        findSubsets(str, sb, i+1);
+        for (int i=0; i<str.length(); i++){
+            char ch = str.charAt(i);
+            String newString = str.substring(0, i) + str.substring(i+1);
+            findPermutation(newString, ans+ch);
+        }
     }
     public static void main (String args[]){
         String str = "abc";
-        findSubsets(str, new StringBuilder(), 0);
+        findPermutation(str, "");
     }
 }
