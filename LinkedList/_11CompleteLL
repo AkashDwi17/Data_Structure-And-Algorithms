@@ -53,6 +53,31 @@ public static int removeFirst (){
     return top;
 }
 
+
+public static int removeLast() {
+    if (head == null) {        // Case 1: empty list
+        return -1;
+    }
+    if (head.next == null) {   // Case 2: only one node
+        int val = head.data;
+        head = tail = null;
+        return val;
+    }
+
+    // Case 3: more than one node
+    Node prev = head;
+    while (prev.next != tail) {
+        prev = prev.next;
+    }
+
+    int val = tail.data;   // last node data
+    prev.next = null;      // remove last
+    tail = prev;           // update tail
+
+    return val;
+}
+
+
 public static void addMiddle (int data, int idx){
     Node newNode = new Node (data);
     if (idx == 0){
