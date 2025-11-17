@@ -37,9 +37,12 @@ public class QueueUsingLinkedList {
                 return -1;
             }
             int top = head.data;
+            
+            // This is mandatory Condition
             if (tail == head){
                 tail = head = null;
-            }else{
+            }
+            else{
                 head = head.next;
             }
             
