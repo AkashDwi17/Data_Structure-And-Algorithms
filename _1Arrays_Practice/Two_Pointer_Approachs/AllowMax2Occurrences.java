@@ -1,8 +1,8 @@
 package Two_Pointer_Approachs;
 import java.util.*;
 
-// o/p {0,0,1,1,1,2,2,3,3,4}
-// i/p {0 0 1 1 2 2 3 3 4}
+// i/p {0,0,1,1,1,2,2,3,3,4}
+// o/p {0 0 1 1 2 2 3 3 4}
 public class AllowMax2Occurrences {
     public static void max2Occ (int arr[]){
         // Arrays.sort(arr);
