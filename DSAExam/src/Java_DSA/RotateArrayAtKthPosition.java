@@ -9,7 +9,6 @@ public class RotateArrayAtKthPosition {
 		System.out.println();
 	}
 	public static void reverse(int arr[], int si, int ei) {
-		for (int i=0; i<arr.length; i++) {
 			
 			while (si < ei) {
 				int temp = arr[si];
@@ -18,7 +17,7 @@ public class RotateArrayAtKthPosition {
 				si ++;
 				ei --;
 			}
-		}
+		
 	}
 	public  static void rotateArrayAtKthPosition (int arr[], int k) {
 		int n = arr.length;

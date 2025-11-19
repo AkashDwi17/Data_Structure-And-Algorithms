@@ -15,12 +15,12 @@ public class MaximumOfAllSubarraysOfSizek {
 
         for (int i = 0; i < n; i++) {
             //  Remove elements that are out of this window
-            while (!dq.isEmpty() && dq.peekFirst() <= i - k) {
+            while (!dq.isEmpty() &&   i - k >= dq.peekFirst()) {
                 dq.removeFirst();
             }
 
             //  Remove smaller elements (they’ll never be the max)
-            while (!dq.isEmpty() && arr[dq.peekLast()] <= arr[i]) {
+            while (!dq.isEmpty() && arr[i] >= arr[dq.peekLast()]) {
                 dq.removeLast();
             }
 
