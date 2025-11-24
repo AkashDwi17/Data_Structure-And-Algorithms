@@ -7,6 +7,7 @@ import java.util.*;
 // Input: [4,5,0,-2,-3,1], K=5
 // Output: 7
 
+// Explanation is below
 
 public class CountSubarraysDivisiblebyK {
 
@@ -59,41 +60,15 @@ public class CountSubarraysDivisiblebyK {
     }
 }
 
+// Explanation
 
-
-/*
- * package PrefixSumSuffixSum;
-
-public class CountSubarraysDivisiblebyK_BruteForce {
-
-    public static int countSubarraysDivisibleByK(int arr[], int k) {
-        int count = 0;
-
-        // Outer loop for start index
-        for (int i = 0; i < arr.length; i++) {
-            int sum = 0; // reset sum for each starting point
-
-            // Inner loop for end index
-            for (int j = i; j < arr.length; j++) {
-                sum = sum + arr[j]; // add element
-
-                // Check if sum is divisible by k
-                if (sum % k == 0) {
-                    count++;
-                }
-            }
-        }
-
-        return count;
-    }
-
-    public static void main(String[] args) {
-        int arr[] = {4, 5, 0, -2, -3, 1};
-        int k = 5;
-
-        int ans = countSubarraysDivisibleByK(arr, k);
-        System.out.println("Total subarrays divisible by " + k + " = " + ans);
-    }
-}
-
- */
+// - Check subarrays
+// For arr = [4,5,0,-2,-3,1] and K=5:
+// - [5] → sum = 5 → divisible by 5 ✅
+// - [0] → sum = 0 → divisible by 5 ✅
+// - [5,0] → sum = 5 → divisible by 5 ✅
+// - [0,-2,-3] → sum = -5 → divisible by 5 ✅
+// - [5,0,-2,-3] → sum = 0 → divisible by 5 ✅
+// - [4,5,0,-2,-3,1] → sum = 5 → divisible by 5 ✅
+// - [1,-3,-2,0,5,4] (same as above but reversed check) → also divisible ✅
+// - Total = 7 subarrays.

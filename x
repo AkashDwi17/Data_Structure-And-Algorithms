@@ -1,19 +1,15 @@
-public class Main {
-    public static void main(String args[]) {
-        int largest = Integer.MIN_VALUE;
-        int secLargest = Integer.MIN_VALUE;
+import java.util.concurrent.*;
 
-        int arr[] = {1, 2, 3, 4, 4, 4};
+public class ThreadPoolDemo {
+    public static void main(String[] args) {
+        ExecutorService service = Executors.newFixedThreadPool(3);
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > largest) {
-                secLargest = largest;
-                largest = arr[i];
-            } else if (arr[i] < largest && arr[i] > secLargest) {
-                secLargest = arr[i];
-            }
+        for(int i=1; i<=5; i++){
+            int taskId = i;
+            service.submit(() -> {
+                System.out.println("Task " + taskId + " executed by " + Thread.currentThread().getName());
+            });
         }
-
-        System.out.println("Second Largest: " + secLargest);
+        service.shutdown();
     }
 }

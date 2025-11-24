@@ -1,18 +1,31 @@
 import java.util.*;
-public class Main{
-    public static void findPermutation (String str, String ans){
-        if (str.length() == 0){
-            System.out.print (ans+" ");
-            return;
+public class Main {
+    public static int countSubArrayDivByk (int arr[], int k){
+        HashMap <Integer, Integer> map = new HashMap<>();
+        map.put (0, 1);
+        int sum = 0;
+        int count = 0;
+
+        for (int i=0; i<arr.length; i++){
+            sum += arr[i];
+            int rem = sum % k;
+            if (rem < 0){
+                rem += k;
+            }
+            if (map.containsKey(rem)){
+                count += map.get(rem);
+            }
+            if (map.containsKey(rem)){
+                map.put (rem, map.get(rem)+1);
+            }
+            else{
+                map.put (rem, 1);
+            }
         }
-        for (int i=0; i<str.length(); i++){
-            char ch = str.charAt(i);
-            String newString = str.substring(0, i) + str.substring(i+1);
-            findPermutation(newString, ans+ch);
-        }
+        return count;
     }
     public static void main (String args[]){
-        String str = "abc";
-        findPermutation(str, "");
+        int arr[] = {4,5,0,-2,-3,1};
+        System.out.println(countSubArrayDivByk(arr, 5));
     }
 }
