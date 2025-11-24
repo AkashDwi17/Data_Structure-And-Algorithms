@@ -7,7 +7,7 @@ import java.util.*;
 // Output: 4 (Subarray [5,2,7,1])
 
 public class LongestSubarraywWithSumK {
-    public static int longestSubarraywWithSumK(int arr[], int k) {
+    public static int longestSubarraywWithSumK(int arr[] , int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int sum = 0;
         int maxLen = 0;
