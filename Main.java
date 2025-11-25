@@ -1,19 +1,26 @@
+
+
 import java.util.*;
-
-// Statement: Given an array and queries (L, R), find sum of elements from L to R using prefix sum.
-// Input: arr = [1, 2, 3, 4, 5], query = (2, 4)
-// Output: 9 (2 + 3 + 4 = 9)
-
 public class Main {
-    public static void rangeSumQuery (int arr[], int left, int right){
+    public static boolean subarraywithSum0 (int arr[]){
+        HashSet <Integer> set = new HashSet<>();
+
         int sum = 0;
-        for (int i=left-1; i<right; i++){
+        for (int i=0; i<arr.length; i++){
             sum += arr[i];
+            if (sum == 0){
+                return true;
+            }
+            if (set.contains(sum)){
+                return true;
+            }else{
+                set.add (sum);
+            }
         }
-        System.out.println(sum);
-    }
+        return false;
+    } 
     public static void main (String args[]){
-        int arr[] = {1, 2, 3, 4, 5};
-        rangeSumQuery(arr, 2, 4);
+        int arr[] = {4, 2, -3, 1, 6};
+        System.out.println(subarraywithSum0(arr));
     }
 }
