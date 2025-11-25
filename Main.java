@@ -1,26 +1,19 @@
 import java.util.*;
-public class Main {
-    public static int longestSubarraywWithSumK (int arr[], int k){
-        HashMap <Integer, Integer> map = new HashMap <>();
-        int sum = 0;
-        int maxLen = 0;
 
-        for (int i=0; i<arr.length; i++){
+// Statement: Given an array and queries (L, R), find sum of elements from L to R using prefix sum.
+// Input: arr = [1, 2, 3, 4, 5], query = (2, 4)
+// Output: 9 (2 + 3 + 4 = 9)
+
+public class Main {
+    public static void rangeSumQuery (int arr[], int left, int right){
+        int sum = 0;
+        for (int i=left-1; i<right; i++){
             sum += arr[i];
-            if (sum == k){
-                maxLen = i+1;
-            }
-            if (map.containsKey(sum-k)){
-                maxLen = Math.max (maxLen, i-map.get(sum-k));
-            }
-            if (!map.containsKey(sum)){
-                map.put (sum, i);
-            }
         }
-        return maxLen;
+        System.out.println(sum);
     }
     public static void main (String args[]){
-        int arr[] = {10, 5, 2, 7, 1, 9};
-        System.out.print (longestSubarraywWithSumK(arr, 15));
+        int arr[] = {1, 2, 3, 4, 5};
+        rangeSumQuery(arr, 2, 4);
     }
 }
