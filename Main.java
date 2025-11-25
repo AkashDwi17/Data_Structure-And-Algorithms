@@ -1,26 +1,24 @@
-
+// Maximum SubArray Sum After One Deletion
 
 import java.util.*;
-public class Main {
-    public static boolean subarraywithSum0 (int arr[]){
-        HashSet <Integer> set = new HashSet<>();
+public class Main{
+    public static int maxSubArraySum (int arr[]){
+        int n = arr.length;
+        int noDelete = arr[0];
+        int oneDelete = arr[0];
+        int ans = arr[0];
 
-        int sum = 0;
-        for (int i=0; i<arr.length; i++){
-            sum += arr[i];
-            if (sum == 0){
-                return true;
-            }
-            if (set.contains(sum)){
-                return true;
-            }else{
-                set.add (sum);
-            }
+        for (int i=1; i<arr.length; i++){
+            oneDelete = Math.max (noDelete, oneDelete+arr[i]);
+
+            noDelete = Math.max (arr[i], noDelete+arr[i]);
+
+            ans = Math.max (ans, Math.max(noDelete, oneDelete));
         }
-        return false;
-    } 
+        return ans;
+    }
     public static void main (String args[]){
-        int arr[] = {4, 2, -3, 1, 6};
-        System.out.println(subarraywithSum0(arr));
+        int arr[] = {1, -2, 0, 3};
+        System.out.println(maxSubArraySum(arr));
     }
 }
