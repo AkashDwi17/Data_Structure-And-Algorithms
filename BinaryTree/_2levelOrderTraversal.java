@@ -2,22 +2,21 @@ package BinaryTree;
 
 import java.util.Queue;
 import java.util.LinkedList;
-
+public class _2levelOrderTraversal{
 // Node class
-class Node {
-    int data;
-    Node left;
-    Node right;
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
 
-    public Node(int data){
-        this.data = data;
-        this.left = null;
-        this.right = null;
+        public Node(int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
     }
-}
 
 // Level order traversal class (your code)
-public class _2levelOrderTraversal {
     public static void levelOrder(Node root){
         if (root == null){
             return;
@@ -32,9 +31,9 @@ public class _2levelOrderTraversal {
             if (currNode == null){
                 System.out.println();
                 if (q.isEmpty()){
-                    q.add(null);
                     break;
                 } 
+                q.add(null);
             } else {
                 System.out.print(currNode.data + " ");
                 if (currNode.left != null){
