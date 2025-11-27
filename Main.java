@@ -1,19 +1,69 @@
 import java.util.*;
-public class Main{
-    public static int maxSubArraySum (int arr[]){
-        int noDelete = arr[0];
-        int oneDelete = arr[0];
-        int ans = arr[0];
+public class Main {
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
 
-        for (int i=1; i<arr.length; i++){
-            oneDelete = Math.max (noDelete, oneDelete+arr[i]);
-            noDelete = Math.max (arr[i], noDelete+arr[i]);
-            ans = Math.max (ans, Math.max (oneDelete, noDelete));
-        } 
-        return ans;
+        public Node (int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    public static boolean isIdentical (Node root, Node subRoot){
+        if (root == null && subRoot == null ){
+            return true;
+        }
+        if (root == null || subRoot == null || root.data != subRoot.data){
+            return false;
+        }
+        if (!isIdentical(root.left, subRoot.left)){
+            return false;
+        }
+        if (!isIdentical(root.right, subRoot.right)){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSubtree (Node root, Node subRoot){
+        if (root == null){
+            return false;
+        }
+        if (isIdentical(root, subRoot)){
+            return true;
+        }
+        return isSubtree(root.left, subRoot) &&
+                isSubtree(root.right, subRoot);
     }
     public static void main (String args[]){
-        int arr[] = {1,-2,0,3};
-        System.out.println(maxSubArraySum(arr));
+         // Manually creating the same tree:
+        //         1
+        //       /   \
+        //      2     3
+        //     / \   / \
+        //    4  5  6  7
+        Node root = new Node (1);
+        root.left = new Node (2);
+        root.left.left = new Node (4);
+        root.left.right = new Node (5);
+
+        root.right = new Node (3);
+        root.right.left = new Node (6);
+        root.right.right = new Node (7);
+
+        // Manually creating the same tree:
+        //      2     
+        //     / \   
+        //    4  5  
+        // Subtree
+
+        Node subRoot = new Node (2);
+        subRoot.left = new Node (4);
+        subRoot.right = new Node (4);
+
+        System.out.println("Is Subtree: " + isSubtree(root, subRoot)); // true
     }
 }
