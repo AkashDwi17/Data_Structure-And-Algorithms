@@ -1,45 +1,25 @@
 import java.util.*;
 public class Main {
-    public static class Node {
-        int data;
-        Node left;
-        Node right;
-
-        public Node (int data){
-            this.data = data;
-            this.left = null;
-            this.right = null;
+    public static int lastOcc (int arr[], int target){
+        int si = 0;
+        int ei = arr.length-1;
+        int ans = -1;
+        while (si <= ei){
+            int mid = si+(ei-si)/2;
+            if (arr[mid] == target){
+                ans = mid;
+                si = mid + 1;
+            }
+            else if (arr[mid] < target){
+                si = mid+1;
+            }else{
+                ei = mid-1;
+            }
         }
-    }
-    
-    public static int kthAnchestor (Node root, int n, int k){
-        if (root == null){
-            return -1;
-        }
-        if (root.data == n){
-            return 0;
-        }
-        int leftData = kthAnchestor(root.left, n, k);
-        int rightData = kthAnchestor(root.right, n, k);
-
-        if (leftData == -1 && rightData == -1){
-            return -1;
-        }
-        int max = Math.max(leftData, rightData);
-        if (max+1 == k){
-            System.out.println(root.data);
-        }
-        return max+1;
+        return ans;
     }
     public static void main (String args[]){
-         Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
-
-        System.out.println(lca(root, 6, 7).data); 
-    }  
+        int arr[] = {1,2,2,2,3};
+        System.out.println(lastOcc(arr, 2));
+    }
 }

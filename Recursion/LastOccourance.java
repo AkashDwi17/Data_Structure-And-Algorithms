@@ -1,4 +1,4 @@
-package BinarySearch_5;
+package Recursion;
 
 // Problem 3 — Last Occurrence (Upper Bound - 1)
 
@@ -6,7 +6,7 @@ package BinarySearch_5;
 // Input: arr = [1,2,2,2,3], target = 2
 // Output: 3
 
-public class _3LastOccourance {
+public class LastOccourance {
     public static int lastOccourance (int arr[], int i, int key){
         if (i == arr.length){
             return -1;
