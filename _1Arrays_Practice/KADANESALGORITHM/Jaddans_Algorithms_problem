@@ -1,0 +1,118 @@
+🧩 4.1 Basic Kadane’s Algorithm (Easy Level)
+🧠 Problem 1: Maximum Subarray Sum (Classic)
+
+Company: Amazon, Microsoft, TCS, Google
+Statement: Find the contiguous subarray with maximum sum.
+Input: arr = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: Subarray = [4,-1,2,1]
+
+🧠 Problem 2: Maximum Subarray (Return Subarray)
+
+Company: Amazon, Accolite
+Input: arr = [1,2,3,-2,5]
+Output: [1,2,3,-2,5] (sum=9)
+
+🧠 Problem 3: Maximum Sum of Subarray of Size K
+
+Company: TCS, Infosys
+Input: arr = [2,1,5,1,3,2], k=3
+Output: 9
+Explanation: Subarray [5,1,3]
+
+⚡ 4.2 Variations – With Deletions / Modifications (Medium)
+🧠 Problem 4: Maximum Sum Subarray With One Deletion (LeetCode 1186)
+
+Company: Amazon, Google
+Input: arr = [1,-2,0,3]
+Output: 4
+Explanation: Delete -2 → subarray [1,0,3] sum=4
+
+🧠 Problem 5: Maximum Product Subarray (LeetCode 152)
+
+Company: Amazon, Microsoft
+Input: arr = [2,3,-2,4]
+Output: 6
+Explanation: Subarray [2,3] → max product = 6
+
+🧠 Problem 6: Maximum Sum Circular Subarray (LeetCode 918)
+
+Company: Google, Amazon
+Input: arr = [5,-3,5]
+Output: 10
+Explanation: Subarray [5,5] (wrap-around)
+
+🧠 Problem 7: Maximum Subarray Sum Less Than K (Contest / Codeforces)
+
+Company: Codeforces, Amazon
+Input: arr=[1,2,3,4,5], K=11
+Output: 10
+Explanation: Subarray [1,2,3,4] sum=10 < 11
+
+🔥 4.3 Kadane Variants (Hard / Contest Level)
+🧠 Problem 8: Maximum Sum of Non-Adjacent Elements
+
+Company: Amazon, Adobe
+Input: arr = [3,2,5,10,7]
+Output: 15
+Explanation: Pick 3,10, sum=15 (cannot pick adjacent)
+
+🧠 Problem 9: Maximum Sum Rectangle in 2D Matrix (Kadane 2D)
+
+Company: Google, Microsoft
+Input: matrix = [[1,2,-1,-4,-20],[ -8,-3,4,2,1],[3,8,10,1,3],[ -4,-1,1,7,-6]]
+Output: 29
+Explanation: Maximum sum rectangle = [[3,8,10],[ -4,-1,1,7]]
+
+🧠 Problem 10: Maximum Sum Subarray After At Most K Modifications
+
+Company: Codeforces, LeetCode
+Input: arr=[1,-2,0,3,-1,2], k=1
+Output: 5
+Explanation: Modify -2 → 0 → subarray [1,0,3, -1,2] sum=5
+
+🧠 Problem 11: Maximum Sum Subarray With At Most One Negative Flip
+
+Company: Amazon, Google
+Input: arr=[-1,-2,3,4,-5]
+Output: 9
+Explanation: Flip -5 → subarray [3,4,5] sum=12
+
+🧠 4.4 Kadane + Index / Count Variants
+🧠 Problem 12: Maximum Subarray Sum and Start/End Indices
+
+Input: arr=[-2,1,-3,4,-1,2,1,-5,4]
+Output: sum=6, start=3, end=6
+
+🧠 Problem 13: Count Number of Subarrays With Maximum Sum
+
+Company: Contest / Codeforces
+Input: arr=[1,-1,2,3,-2,2]
+Output: 2
+Explanation: Maximum sum=5 → subarrays [2,3], [2,3] (if overlapping considered once)
+
+🧠 Problem 14: Maximum Sum Subarray With Exactly K Elements
+
+Input: arr=[1,2,3,4,5], k=3
+Output: 12
+Explanation: Subarray [3,4,5]
+
+🧮 4.5 Combined Patterns (Prefix + Kadane)
+🧠 Problem 15: Maximum Sum Subarray With At Most K Elements Replaced
+
+Company: Codeforces / Amazon
+Input: arr=[1,-2,3,-1,5], k=1
+Output: 9
+Explanation: Replace -2 → 3 → subarray [1,3,-1,5] sum=8
+
+🧠 Problem 16: Maximum Sum Subarray Modulo M (Hackerrank / Google)
+
+Input: arr=[3,3,9,9,5], m=7
+Output: 6
+Explanation: Subarray sum modulo 7 is maximized
+
+🧠 Problem 17: Maximum Subarray Sum With Circular Array (Kadane + Total Sum Trick)
+
+Input: arr = [8,-1,3,4]
+Output: 15
+Explanation: Max circular subarray = sum(arr) - minSubarraySum = 8-(-1+3+4)=15

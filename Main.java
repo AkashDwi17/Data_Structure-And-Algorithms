@@ -11,73 +11,35 @@ public class Main {
             this.right = null;
         }
     }
-
-    public static class Info  {
-        Node node;
-        int hd;
-        public Info (Node node, int hd){
-            this.node =  node;
-            this.hd = hd;
+    
+    public static int kthAnchestor (Node root, int n, int k){
+        if (root == null){
+            return -1;
         }
+        if (root.data == n){
+            return 0;
+        }
+        int leftData = kthAnchestor(root.left, n, k);
+        int rightData = kthAnchestor(root.right, n, k);
+
+        if (leftData == -1 && rightData == -1){
+            return -1;
+        }
+        int max = Math.max(leftData, rightData);
+        if (max+1 == k){
+            System.out.println(root.data);
+        }
+        return max+1;
     }
-    public static void topView (Node root){
-        Queue <Info> q = new LinkedList<>();
-        HashMap <Integer, Node> map = new HashMap<>();
-
-        int min = 0;
-        int max = 0;
-
-        q.add (new Info(root, 0));
-        q.add (null);
-
-        while (!q.isEmpty()){
-            Info curr = q.remove();
-            if (curr == null){
-                if (q.isEmpty()){
-                    break;
-                }
-                q.add(null);
-            }else{
-                if (!map.containsKey(curr.hd)){
-                    map.put (curr.hd, curr.node);
-                }
-                if (curr.node.left != null){
-                    q.add(new Info(curr.node.left, curr.hd-1));
-                    min = Math.min (min, curr.hd-1);
-                }
-
-                if (curr.node.right != null){
-                    q.add(new Info(curr.node.right, curr.hd+1));
-                    max = Math.max(max, curr.hd+1);
-                }
-            }
-        }
-        for (int i=min; i<=max; i++){
-            System.out.print(map.get(i).data+" ");
-        }
-        System.out.println();
-    }
-
     public static void main (String args[]){
-
-
-
-        /*
-         1
-       /   \
-      2     3
-     / \   / \
-    4   5 6   7
-        
-        */
          Node root = new Node(1);
         root.left = new Node(2);
-        root.left.left = new Node (4);
-        root.left.right = new Node (5);
-        root.right = new Node (3);
-        root.right.left = new Node (6);
-        root.right.right = new Node (7);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
 
-        topView(root);
-    }
+        System.out.println(lca(root, 6, 7).data); 
+    }  
 }

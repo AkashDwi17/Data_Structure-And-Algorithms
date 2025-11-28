@@ -1,0 +1,325 @@
+Sorting-Based Tricks — Full Practice Sheet (problems, companies, input → output / testcases)
+
+Nice — sorting is a deceptively simple prestep that unlocks a huge set of interview/contest problems (interval scheduling, k-sum, medians, frequency problems, greedy proofs). Below is a complete, structured practice set organized by difficulty and pattern. Each problem includes: statement, common companies, 1–3 sample testcases (input → output) and useful edge cases to try. Use these to implement, test, and discuss complexity/ correctness.
+
+1 — Quick overview / tips
+
+Typical trick: sort the array/pairs (O(n log n)), then apply two-pointers or greedy linear pass (O(n)).
+
+Common patterns: intervals (sort by start or end), k-sum reduction (fix some, two pointers for rest), median calculations, frequency → sorting entries, greedy pairing (minimize/maximize differences), schedule/room allocation (sort by start/end), remove/merge overlaps (sort by start).
+
+Always mention: sort complexity + any stable/unstable needed; handle duplicates and negative numbers.
+
+2 — EASY (Fundamentals — implementable in interviews)
+Problem 1 — Sort array
+
+Companies: all
+Statement: Sort integers ascending.
+Input → Output (single testcase):
+[3,1,4,1,5,9] → [1,1,3,4,5,9]
+Edge: empty array → []
+
+Problem 2 — Check if array can be made strictly increasing by removing at most one element
+
+Companies: Amazon, Microsoft (easy interview)
+Statement: Given arr, can you remove ≤1 element to make strictly increasing?
+Input → Output:
+[1,2,10,5,7] → True
+[2,3,1,2] → False
+Idea: sort? (here you typically scan unsorted with greedy). But sorting-based observation: compare with sorted unique list for quick check (but careful with indices).
+
+Problem 3 — Find k smallest / largest elements
+
+Companies: TCS, Amazon
+Statement: Return k smallest elements sorted.
+Input → Output:
+arr=[7,10,4,3,20,15], k=3 → [3,4,7]
+arr=[7,10,4,3,20,15], k=2 (largest) → [20,15]
+Edge: k > n → return full sorted array.
+
+Problem 4 — Sort by absolute difference from X
+
+Companies: Company tests / practice problems
+Input → Output:
+arr=[10,5,3,9], X=7 → sorted by |a-X| → [5,9,10,3] (ties tie-breaker: smaller element first)
+Testcases: provide equal distances.
+
+3 — INTERVALS / MEETING ROOMS / SCHEDULING (core sorting trick)
+Problem 5 — Merge Intervals
+
+Companies: Google, Amazon, Microsoft
+Statement: Given intervals [[s,e]], merge overlapping intervals and return merged list sorted by start.
+Input → Output:
+[[1,3],[2,6],[8,10],[15,18]] → [[1,6],[8,10],[15,18]]
+[[1,4],[4,5]] → [[1,5]] (treat end==start as overlapping if required)
+Edge: intervals unsorted initially.
+
+Problem 6 — Insert Interval
+
+Companies: common interview
+Statement: Insert new interval and merge overlaps.
+Input → Output:
+intervals=[[1,3],[6,9]], new=[2,5] → [[1,5],[6,9]]
+
+Problem 7 — Meeting Rooms I (Can attend all?)
+
+Companies: Google, Microsoft
+Statement: Given intervals, return True if no overlaps (can attend all meetings).
+Input → Output:
+[[0,30],[5,10],[15,20]] → False
+[[0,5],[5,10]] → True (if end==start allowed)
+
+Problem 8 — Meeting Rooms II (Min rooms required)
+
+Companies: Amazon, Microsoft, Facebook
+Statement: Given intervals, find min number of conference rooms required.
+Input → Output:
+[[0,30],[5,10],[15,20]] → 2
+[[7,10],[2,4]] → 1
+Approaches: sort by start + min-heap of end times or sort starts and ends separately (sweep-line).
+
+Problem 9 — Minimum Number of Arrows to Burst Balloons
+
+Companies: LeetCode / contest pattern
+Statement: Intervals as balloons; an arrow at x bursts all containing intervals. Min arrows to burst all.
+Input → Output:
+[[10,16],[2,8],[1,6],[7,12]] → 2
+Sort by end and greedy.
+
+Problem 10 — Non-overlapping Intervals (remove minimum intervals)
+
+Companies: Amazon, Google
+Statement: Remove minimum intervals so remaining are non-overlapping. Return count removed.
+Input → Output:
+[[1,2],[2,3],[3,4],[1,3]] → 1
+Sort by end, greedy keep earliest end.
+
+4 — K-SUM / TWO-POINTER AFTER SORT (3Sum, 4Sum, closest variants)
+Problem 11 — Two Sum (sorted input)
+
+Companies: all
+Statement: Given sorted arr and target, find pair indices.
+Input → Output:
+arr=[1,2,3,4,6], target=6 → (1,3) (0-based)
+Testcases: negative values, duplicates.
+
+Problem 12 — 3Sum (all unique triplets summing to 0)
+
+Companies: Google, Facebook, many contests
+Statement: Return unique triplets [a,b,c] where a+b+c=0.
+Input → Output:
+[-1,0,1,2,-1,-4] → [[-1,-1,2],[-1,0,1]]
+Sort and for each i use left/right two pointers.
+Edge: duplicates handling.
+
+Problem 13 — 3Sum Closest
+
+Companies: Amazon, Microsoft
+Statement: Triplet sum closest to target. Return sum.
+Input → Output:
+nums=[-1,2,1,-4], target=1 → 2 (sum of -1+2+1)
+
+Problem 14 — 4Sum (all quadruplets)
+
+Companies: contests
+Statement: Find unique quadruplets sum to target.
+Input → Output:
+[1,0,-1,0,-2,2], target=0 → [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+Approach: sort + two nested loops + two pointers.
+
+Problem 15 — k-sum generalized (meet-in-middle / recursion + two pointers)
+
+Companies: hard contest / interviews
+Statement: Find k numbers sum to target.
+Input → Output (k=4 example): same as 4Sum.
+
+5 — PAIRING / MINIMIZE MAX DIFF / GREEDY MATCHING
+Problem 16 — Pair elements to minimize sum of max of pairs
+
+Companies: contests / interviews
+Statement: Given 2n numbers, pair them (n pairs) so sum of max in each pair is minimized.
+Observation: sort and pair adjacent.
+Input → Output:
+[3,1,2,4] → pairs (1,2),(3,4) → sum(max)=2+4=6
+
+Problem 17 — Minimum absolute difference pairs (find pairs with min diff)
+
+Companies: many coding tests
+Input → Output:
+[4,2,1,3] → pairs with min diff: [(1,2),(2,3),(3,4)] (min diff = 1)
+Sort then single pass compute diffs.
+
+Problem 18 — Assign cookies / maximize content children
+
+Companies: Google (Greedy)
+Statement: Given greed[] and size[], maximize number of content children (size>=greed).
+Input → Output:
+greed=[1,2,3], size=[1,1] → 1
+Sort both arrays and greedy two-pointer.
+
+Problem 19 — Boats to Save People (limit per boat)
+
+Companies: LeetCode contests
+Statement: Each boat holds at most two people, sum limit. Min boats.
+Input → Output:
+[3,2,2,1], limit=3 → 3
+Sort weights, pair lightest+heaviest via two pointers.
+
+6 — MEDIAN / MODE / FREQUENCY (sorting frequency maps)
+Problem 20 — Find Median of Two Sorted Arrays (classic)
+
+Companies: Google, Facebook (hard)
+Statement: two sorted arrays find median in O(log(min(m,n))). (but basic: merge approach O(m+n) after sorting)
+Input → Output:
+nums1=[1,3], nums2=[2] → 2.0
+[1,2], [3,4] → 2.5
+
+Problem 21 — Find top k frequent elements
+
+Companies: Amazon, Google
+Statement: Return k elements with highest frequency. Sorting approach: count→sort by freq desc.
+Input → Output:
+nums=[1,1,1,2,2,3], k=2 → [1,2]
+Edge: ties.
+
+Problem 22 — Mode of an array (most frequent)
+
+Companies: basic interviews
+Input → Output:
+[1,2,2,3,3,3] → 3
+
+Problem 23 — Minimum Moves to Equal Array Elements (making elements equal to median)
+
+Companies: interview pattern
+Statement: minimum total moves (increment/decrement by 1) to equalize = sum |a_i - median|.
+Input → Output:
+[1,2,3] → 2 (move 1→2 and 3→2)
+
+7 — SORT + PREFIX SLEEPERS (range / sum after sorting)
+Problem 24 — Smallest range covering elements from k lists
+
+Companies: hard / contests
+Statement: Given k sorted lists, find smallest range [l,r] that contains at least one number from each list. (Use heap + pointers).
+Input → Output:
+[[4,10,15,24,26],[0,9,12,20],[5,18,22,30]] → [20,24]
+
+Problem 25 — Minimum Sum of Absolute Differences to an index (choose best meeting point)
+
+Companies: Google (practice)
+Statement: minimize sum |a_i - x| → choose median. Sorting helps.
+
+8 — SORT + TWO-POINTER VARIATIONS (closest / count pairs)
+Problem 26 — Count pairs with sum less than target
+
+Companies: contest / interviews
+Input → Output:
+arr=[2,7,11,15], target=9 → 1 (only pair (2,7))
+**Sort + two pointers count combinations.
+
+Problem 27 — Count pairs with difference less than K
+
+Statement: sort and two pointer approach.
+Input → Output:
+arr=[1,3,4,7], K=3 → 3 pairs: (1,3),(3,4),(4,7?) check diff.
+
+Problem 28 — Closest pair sum to target (two-sum-closest)
+
+Companies: Amazon, Google
+Input → Output:
+arr=[10,22,28,29,30,40], target=54 → (22,30) (sum 52 vs maybe others; pick closest).
+
+9 — SORTING IN PLACE / STABLE / CUSTOM COMPARATORS
+Problem 29 — Sort strings by anagram groups
+
+Companies: basic interview
+Input → Output:
+["eat","tea","tan","ate","nat","bat"] → grouped anagrams (output groups in any order, within group any order): [['eat','tea','ate'],['tan','nat'],['bat']]
+Technique: sort characters inside string then group in dict, or sort entire list by key=sorted(s).
+
+Problem 30 — Custom object sort (sort people by age, name)
+
+Companies: common coding tasks
+Input → Output: sort list of tuples by multiple keys.
+
+10 — HARD / CONTEST (merge many tricks + correctness proof)
+Problem 31 — Maximum Number of Events That Can Be Attended (greedy by end time)
+
+Companies: Google, Facebook (hardish)
+Statement: Given events [start,end], attend at most one event at a time, maximize number you can attend (one day per event integer days). Sort by end and greedily pick earliest finishing event.
+Input → Output: [[1,2],[2,3],[3,4]] → 3
+
+Problem 32 — Minimum Platforms Required for Railway Station (overlaps)
+
+Companies: interview pattern
+Statement: Given arrival and departure times, find min platforms so no waiting. Sort arrivals and departures and sweep.
+Input → Output: arr=[0900,0940,0950,1100,1500,1800], dep=[0910,1200,1120,1130,1900,2000] → 3
+
+Problem 33 — Maximum Gap / maximum consecutive gap after sorting (linear after sort)
+
+Companies: contests
+Statement: find max gap between successive elements in sorted array (often solved by bucket sort for linear but sorting is simpler).
+Input → Output: [3,6,9,1] → 3 (between 3 and 6 etc.)
+
+11 — TEST CASES COLLECTION (copy-paste friendly)
+
+Below are grouped testcases you can use to verify implementations.
+
+Intervals / Meeting Rooms
+
+[[1,3],[2,6],[8,10],[15,18]] → merge: [[1,6],[8,10],[15,18]]
+
+[[1,4],[4,5]] → [[1,5]]
+
+[[0,30],[5,10],[15,20]] → canAttend: False, min rooms: 2
+
+[[1,2],[2,3],[3,4],[1,3]] → removeMin = 1
+
+K-sum / Two pointers
+
+[-1,0,1,2,-1,-4] → 3Sum: [[-1,-1,2],[-1,0,1]]
+
+[1,0,-1,0,-2,2], target=0 → 4Sum → see list in Problem 14
+
+[10,22,28,29,30,40], target=54 → closest pair (22,30)
+
+Pairing / Greedy
+
+weights=[3,2,2,1], limit=3 → boats: 3
+
+greed=[1,2,3], size=[1,1] → content=1
+
+Frequency / Median
+
+nums=[1,1,1,2,2,3], k=2 → top k: [1,2]
+
+arr=[1,2,3,4,5] → median = 3, min moves to equal = 6 (for different definitions check).
+
+Sorting edge cases
+
+empty arrays []
+
+identical elements [1,1,1,1]
+
+negative numbers and zeros e.g. [-5,-1,0,3]
+
+large arrays with duplicates/performance.
+
+12 — Complexity & Implementation notes (short)
+
+Sorting step: O(n log n). After sort, many solutions run in O(n), overall O(n log n).
+
+For k-sum with k>2: recursion reduces to two-pointer at last level; ensure de-duplication to avoid repeated answers.
+
+For intervals: sort by start for merges, sort by end for greedy selection/min rooms when using heap-less approach (or sort starts/ends separately).
+
+For frequency/top-k: count map O(n), sort entries O(m log m) where m distinct keys. Use heap for k smaller.
+
+If you want, I can next:
+
+(A) Produce Java solution templates (clean, commented, O(n log n) sorts + two pointers/greedy) for the top 20 problems above — copy-paste ready.
+
+(B) Produce one-page cheat sheet summarizing which key sort order to use (sort by start vs end vs value) + code snippet per pattern.
+
+(C) Generate 30 curated practice problems (with difficulty labels + expected time) as a downloadable file.
+
+Which one would you like me
