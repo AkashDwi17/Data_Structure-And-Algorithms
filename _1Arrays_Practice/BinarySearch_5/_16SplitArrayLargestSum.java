@@ -13,30 +13,62 @@ package BinarySearch_5;
 
 public class _16SplitArrayLargestSum {
     
-    public static int maxWindowSum(int[] arr, int windowSize) {
+    // Check if it is possible to split nums into at most m subarrays
+    // such that each subarray has sum <= allowedMaxSum
+    private static boolean canSplit(int[] nums, int maxSubarrays, long allowedMaxSum) {
 
-        int currentWindowSum = 0;
-        int maxWindowSum = Integer.MIN_VALUE;
+        int subarrayCount = 1;     // we start with one subarray
+        long currentSubarraySum = 0;
 
-        // Step 1: Calculate the sum of the first window
-        for (int i = 0; i < windowSize; i++) {
-            currentWindowSum += arr[i];
+        for (int num : nums) {
+            if (currentSubarraySum + num <= allowedMaxSum) {
+                currentSubarraySum += num;
+            } else {
+                subarrayCount++;
+                currentSubarraySum = num;
+
+                if (subarrayCount > maxSubarrays) {
+                    return false;   // too many subarrays → not possible
+                }
+            }
         }
 
-        maxWindowSum = Math.max(maxWindowSum, currentWindowSum);
+        return true;  // valid split under allowedMaxSum
+    }
 
-        // Step 2: Slide the window
-        for (int i = windowSize; i < arr.length; i++) {
-            currentWindowSum = currentWindowSum - arr[i - windowSize] + arr[i];
-            maxWindowSum = Math.max(maxWindowSum, currentWindowSum);
+    // Main function to compute the minimum largest subarray sum
+    public static int splitArray(int[] nums, int m) {
+
+        long lowerBound = 0;   // lowest possible answer (max element)
+        long upperBound = 0;   // highest possible answer (sum of all elements)
+
+        for (int num : nums) {
+            lowerBound = Math.max(lowerBound, num);
+            upperBound += num;
         }
 
-        return maxWindowSum;
+        long optimalLargestSum = upperBound;
+
+        while (lowerBound <= upperBound) {
+
+            long midCap = lowerBound + (upperBound - lowerBound) / 2;
+
+            if (canSplit(nums, m, midCap)) {
+                optimalLargestSum = midCap;     // possible, try smaller value
+                upperBound = midCap - 1;
+            } else {
+                lowerBound = midCap + 1;        // not possible, need larger value
+            }
+        }
+
+        return (int) optimalLargestSum;
     }
 
     public static void main(String[] args) {
-        int arr[] = {7, 2, 5, 10, 8};
-        System.out.println(maxWindowSum(arr, 2));  // Output: 18
+        int[] nums = {7, 2, 5, 10, 8};
+        int m = 2;
+
+        System.out.println(splitArray(nums, m));  // Output: 18
     }
 }
 
