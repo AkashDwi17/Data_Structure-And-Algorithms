@@ -1,52 +1,68 @@
 import java.util.*;
 public class Main{
-    public static int search (int arr[], int si, int ei, int key){
-        if (si > ei){
-            return -1;
+    public static void print (int arr[]){
+        for (int i=0; i<arr.length; i++){
+            System.out.print(arr[i]+" ");
         }
-        
-            int mid = si + (ei-si)/2;
+        System.out.println ();
+    }
 
-            if (arr[si] <= arr[mid]){
+    // Bubble Sort
+    // Large Elements comes to the end of array by swapping the adjacent elements to the end of array
 
-                if (arr[mid] == key){
-                    return mid;
-                }
+    public static void bubbleSort (int arr[]){
 
-                if  (arr[si] <= key && key <= arr[mid]){
-                    return search (arr, si, mid-1, key);
-                }else{
-                    return search (arr, mid+1, ei, key);
+        for (int i = 0; i<arr.length-1; i++){
+            for (int j=0; j<arr.length-i-1; j++){
+                if (arr[j] > arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
                 }
-            }else{
-                if (key >= mid+1 && key <= ei){
-                    return search (arr, mid+1, ei, key);
-                }else{
-                    return search (arr, si, mid-1, key);
-                }
+            }
         }
     }
-    public static void main (String args[]){
-        int arr[] = {4,5,6,7,0,1,2};
-        System.out.println(search(arr, 0, arr.length-1, 4));
-        System.out.println();
 
-        System.out.println(search(arr, 0, arr.length-1, 5));
-        System.out.println();
+    // Selection Sort 
+    // pick an elements from the unsorted part and put it at the begning
 
-        System.out.println(search(arr, 0, arr.length-1, 6));
-        System.out.println();
+    public static void selectionSort (int arr[]){
+        for (int i=0; i<arr.length-1; i++){
+            int minPos = i;
+            for (int j=i+1; j<arr.length; j++){
+                if (arr[minPos] > arr[j]){
+                    minPos = j;
+                }
+            }
+            int temp = arr[minPos];
+            arr[minPos] = arr[i];
+            arr[i] = temp;
+        } 
+    }
 
-        System.out.println(search(arr, 0, arr.length-1, 7));
-        System.out.println();
+    // Insertion Sort
 
-        System.out.println(search(arr, 0, arr.length-1, 0));
-        System.out.println();
+    // Pick an element from the unsorted part and put it at its correct position
+    public static void insertionSort (int arr[]){
+        for (int i=0; i<arr.length; i++){
+            int curr = arr[i];
+            int prev = i-1;
+            while (prev >= 0 && arr[prev] > curr){
+                arr[prev+1] = arr[prev];
+                prev --;
+            }
+            arr[prev+1] = curr;
+        }
+    }
 
-        System.out.println(search(arr, 0, arr.length-1, 1));
-        System.out.println();
 
-        System.out.println(search(arr, 0, arr.length-1, 2));
-        System.out.println();
+    public  static void main (String args[]){
+        int arr[] = {5,4,1,3,2};
+        bubbleSort(arr);
+        print(arr);
+        selectionSort(arr);
+        print(arr);
+        insertionSort(arr);
+        print(arr);
     }
 }

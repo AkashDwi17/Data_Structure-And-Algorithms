@@ -3,6 +3,9 @@ package Sorting_Algorithm;
 public class SelectionSort {
     // Selection Sort
 
+    // Pick the smallest element from the unsorted part and put it at the beginning
+
+
     public static void print (int arr[]){
         for (int i=0; i<arr.length; i++){
             System.out.print (arr[i]+" ");

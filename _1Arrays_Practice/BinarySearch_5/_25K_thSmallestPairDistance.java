@@ -25,18 +25,18 @@ public class _25K_thSmallestPairDistance {
 
     public static int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums); // sort first for two-pointer
-        int lo = 0;
-        int hi = nums[nums.length - 1] - nums[0];
+        int si = 0;
+        int ei = nums[nums.length - 1] - nums[0];
 
-        while (lo < hi) {
-            int mid = lo + (hi - lo) / 2;
+        while (si < ei) {
+            int mid = si + (ei - si) / 2;
             if (countPairs(nums, mid) >= k) {
-                hi = mid;
+                ei = mid;
             } else {
-                lo = mid + 1;
+                si = mid + 1;
             }
         }
-        return lo;
+        return si;
     }
 
     public static void main(String[] args) {

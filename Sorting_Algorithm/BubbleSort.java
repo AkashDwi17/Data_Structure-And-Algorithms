@@ -1,6 +1,7 @@
 package Sorting_Algorithm;
 
-// package Sorting_Algorithm_Java;
+// Bubble Sort
+// Large Elements comes to the end of array by swapping the adjacent elements to the end of array
 
 public class BubbleSort {
     public static void print (int arr[]){

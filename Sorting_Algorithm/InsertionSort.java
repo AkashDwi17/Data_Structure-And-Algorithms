@@ -2,6 +2,9 @@ package Sorting_Algorithm;
 
 public class InsertionSort {
     // insertion sort
+
+    // Pick an element from the unsorted part and put it at its write position
+    
     public static void print (int arr[]){
         for (int i=0; i<arr.length; i++){
             System.out.print (arr[i]+" ");
