@@ -66,6 +66,48 @@ public class Main {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+
+    // Reverse LL
+    public static void reverse (){
+        Node prev = null;
+        Node curr = head;
+        Node next;
+
+        while (curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
+    // Delete nth Node from end
+
+    public static void deleteNthNode (int n){
+         
+        int sz = 0;
+        Node temp = head;
+        while (temp != null){
+            temp = temp.next;
+            sz++;
+        }
+
+        if (n == sz){
+            head = head.next;
+            return;
+        }
+        int i = 1;
+        int idxToFind = sz-n;
+        Node prev = head;
+
+        while (i < idxToFind){
+            i++;
+            prev = prev.next;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
     public static void main (String args[]){
         // LinkedList ll = new LinkedList ();
         addLast(1);
@@ -74,7 +116,7 @@ public class Main {
         addLast(4);
         addLast(5);
         print();
-        addMiddle(100, 3);
+        deleteNthNode(2);
         print();
     }
 }
