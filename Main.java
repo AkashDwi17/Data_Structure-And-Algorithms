@@ -108,15 +108,55 @@ public class Main {
         prev.next = prev.next.next;
         return;
     }
+
+    // check is palindrome
+
+    public static Node findMid (Node head){
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    public static boolean isPalindrome (){
+        if (head == null || head.next == null){
+            return true;
+        }
+        Node midNode = findMid(head);
+
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while (curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node left = head;
+        Node right = prev;
+
+        while (right != null){
+            if (left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
     public static void main (String args[]){
         // LinkedList ll = new LinkedList ();
         addLast(1);
         addLast(2);
-        addLast(3);
-        addLast(4);
-        addLast(5);
+        addLast(1);
+        addLast(2);
+        addLast(1);
         print();
-        deleteNthNode(2);
-        print();
+        System.out.println(isPalindrome());
     }
 }
