@@ -8,7 +8,6 @@ import java.util.*;
 
 public class MergeTwoSortedArrays_2 {
     public static void merge2Array (int nums1[], int nums2[]){
-        int k = 0;
         int i = 0;
         List <Integer> list = new ArrayList<>();
         while (i<nums1.length || i<nums2.length){
