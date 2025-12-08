@@ -47,7 +47,6 @@ public class CountSubarraysDivisiblebyK {
                 map.put(rem, 1);
             }
         }
-
         return count;
     }
 
