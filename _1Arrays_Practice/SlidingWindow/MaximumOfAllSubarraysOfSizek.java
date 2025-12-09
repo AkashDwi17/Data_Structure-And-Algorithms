@@ -31,7 +31,6 @@ public class MaximumOfAllSubarraysOfSizek {
             if (i >= k - 1) {
                 result.add(arr[dq.peekFirst()]);
             }
-            
         }
 
         return result;
