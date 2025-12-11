@@ -1,59 +1,103 @@
 import java.util.*;
 public class Main {
-    public static void printBoard (char board[][]){
-        System.out.println("===========================================");
-        for (int i=0; i< board.length; i++){
-            for (int j=0; j<board[0].length; j++){
-                System.out.print(board[i][j]+" ");
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
+        public Node (int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+    public static class BinaryTree {
+        static int idx = -1;
+        public static Node buildTree (int nodes[]){
+            idx ++;
+            if (nodes[idx] == -1){
+                return null;
             }
-            System.out.println();
+            Node newNode = new Node (nodes[idx]);
+            newNode.left = buildTree(nodes);
+            newNode.right = buildTree(nodes);
+            return newNode;
         }
     }
 
-    public static boolean isSafe (char board[][], int row, int col){
-        for (int i=row-1; i>=0; i--){
-            if (board[i][col] == 'Q'){
-                return false;
-            }
-        }
-        for (int i=row-1, j=col-1; i>=0 && j>= 0; i--, j--){
-            if (board[i][j] == 'Q'){
-                return false;
-            }
-        }
-
-        for (int i=row-1, j=col+1; i>=0 && j<board.length-1; i--, j++){
-            if (board[i][j] == 'Q'){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static void nQueens (char board[][], int row){
-        if (row == board.length){
-            printBoard (board);
+    // PreOrder
+    public static void preOrder (Node root){
+        if (root == null){
             return;
         }
-        for (int j=0; j<board.length; j++){
-            if (isSafe (board, row, j)){
-                board[row][j] = 'Q';
-                nQueens(board, row+1);
-                board[row][j] = 'X';
+        System.out.print (root.data+" ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    // Inorder
+    public static void inOrder (Node root){
+        if (root == null){
+            return;
+        }
+        inOrder(root.left);
+        System.out.print (root.data+" ");
+        inOrder(root.right);
+    }
+
+    // Post Order
+    public static void postOrder (Node root){
+        if (root == null){
+            return;
+        }
+        postOrder (root.left);
+        postOrder (root.right);
+        System.out.print (root.data+" ");
+    }
+
+    // level Order
+
+    public static void levelOrder (Node root){
+        if (root == null){
+            return;
+        }
+        Queue <Node> q = new LinkedList<>();
+        q.add (root);
+        q.add (null);
+        
+        while (!q.isEmpty()){
+            Node currNode = q.remove();
+            if (currNode == null){
+                System.out.println();
+                if (q.isEmpty()){
+                    break;   
+                }
+                q.add(null);
+            }
+            else{
+                System.out.print (currNode.data+" ");
+                if (currNode.left != null){
+                    q.add(currNode.left);
+                }
+                if (currNode.right != null){
+                    q.add(currNode.right);
+                }
             }
         }
     }
 
-
+    
     
     public static void main (String args[]){
-        int n = 5;
-        char board[][] = new char [n][n];
-        for (int i=0; i<board.length; i++){
-            for (int j=0; j<board[0].length; j++){
-                board[i][j] = 'X';
-            }     
-        }
-        nQueens(board, 0);
+        int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,6,-1,-1,7,-1,-1};
+        BinaryTree tree = new BinaryTree();
+        Node root = tree.buildTree(nodes);
+        // System.out.print (root.data);
+        preOrder(root);
+        System.out.println();
+        inOrder(root);
+        System.out.println();
+        postOrder(root);
+        System.out.println();
+        levelOrder(root);
     }
 }
