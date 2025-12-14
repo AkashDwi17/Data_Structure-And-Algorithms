@@ -151,6 +151,21 @@ public class Main {
         System.out.println ();
     }
 
+    // Transform to sum tree 
+
+    public static int transFormTOSumTree (Node root){
+        if (root == null){
+            return 0;
+        }
+        int leftChild = transFormTOSumTree(root.left);
+        int rightChild = transFormTOSumTree(root.right);
+
+        int data = root.data;
+
+        root.data = leftChild + rightChild;
+
+        return data + leftChild + rightChild;
+    }
 
     public static void kthLevel (Node root, int level, int k){
         if (k == level){
