@@ -37,8 +37,30 @@ public class _10TransformToSumTree {
         preOrder(root.right);
     }
 
+// ===================================  Second Method  ==============================
+    // Kth Anchestor 
+    public static int kthAnchestor2 (Node root, int n, int k){
+        if (root == null){
+            return -1;
+        }
+        if (root.data == n){
+            return 0;
+        }
 
-    
+        int leftInfo = kthAnchestor2(root.left, n, k);
+        int rightInfo = kthAnchestor2(root.right, n, k);
+
+        if (leftInfo == -1 && rightInfo == -1){
+            return -1;
+        }
+        int max = Math.max (leftInfo, rightInfo);
+        if (max+1 == k){
+            System.out.println(root.data+"  ");
+        }
+        return max+1;
+    }
+
+    // ===========================================================================
     public static void main(String[] args) {
         // Manually creating the same tree:
         //         1
