@@ -52,6 +52,10 @@ public class _8MinimumDistBtwNode {
         Node lca = lca2(root, n1, n2);
         int dist1 = lcaDist(root, n1);
         int dist2 = lcaDist(root, n2);
+
+        // int dist1 = lcaDist(lca, n1);
+        // int dist2 = lcaDist(lca, n2);
+
         return dist1 + dist2;
     }
     public static void main(String[] args) {
@@ -66,7 +70,7 @@ public class _8MinimumDistBtwNode {
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
-        root.left.left = new Node(4);
+        root.left.left = new Node(4);   
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
