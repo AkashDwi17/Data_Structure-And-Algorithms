@@ -150,6 +150,71 @@ public class Main {
         }
         System.out.println ();
     }
+
+
+    public static void kthLevel (Node root, int level, int k){
+        if (k == level){
+            System.out.print(root.data+" ");
+            return;
+        }
+        kthLevel(root.left, level+1, k);
+        kthLevel(root.right, level+1, k);
+    }
+
+    public static Node lca5 (Node root, int n1, int n2){
+        if (root == null || root.data == n1 || root.data == n2){
+            return root;
+        }
+        Node leftLca = lca5 (root.left, n1, n2);
+        Node rightLca = lca5 (root.right, n1, n2);
+
+        if (leftLca == null){
+            return rightLca;
+        }
+        if (rightLca == null){
+            return  leftLca;
+        }
+        return root;
+    }
+
+    public static Node lca (Node root, int n1, int n2){
+        if (root == null || root.data == n1 || root.data == n2){
+            return root;
+        }
+        Node leftInfo = lca (root.left, n1, n2);
+        Node rightInfo = lca (root.right, n1, n2);
+
+        if (leftInfo == null){
+            return rightInfo;
+        }
+        if (rightInfo == null){
+            return leftInfo;
+        }
+        return root;
+    }
+    
+    // Kth Anchestor 
+    public static int kthAnchestor (Node root, int n, int k){
+        if (root == null){
+            return -1;
+        }
+        if (root.data == n){
+            return 0;
+        }
+
+        int leftInfo = kthAnchestor(root.left, n, k);
+        int rightInfo = kthAnchestor(root.right, n, k);
+
+        if (leftInfo == -1 && rightInfo == -1){
+            return -1;
+        }
+        int max = Math.max (leftInfo, rightInfo);
+        if (max+1 == k){
+            System.out.println(root.data+"  ");
+        }
+        return max+1;
+    }
+    
     public static void main (String args[]){
         Node root = new Node(1);
         root.left = new Node(2);
