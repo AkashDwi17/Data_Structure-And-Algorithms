@@ -1,7 +1,7 @@
 package GreedyAlgorithm;
 import java.util.*;
 
-public class MaximumLength_ChainOfPairs {
+public class MaximumLength_ChainOfPairs { // Ans 3
     public static void main(String[] args) {
         int pairs[][] = {{5,24}, {39,60}, {5,28}, {27,40}, {50,90}};
 
