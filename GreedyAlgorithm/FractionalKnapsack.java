@@ -2,7 +2,7 @@ package GreedyAlgorithm;
 import java.util.*;
 
 public class FractionalKnapsack {
-    public static void main(String[] args) {
+    public static void main(String[] args) { // Ans = 240
         int val[] = {60, 100, 120};
         int wt[] = {10,20,30};
 
