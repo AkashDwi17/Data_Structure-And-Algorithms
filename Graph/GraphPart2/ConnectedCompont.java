@@ -1,4 +1,4 @@
-package Graph.GraphPart1.GraphPart2;
+package Graph.GraphPart2;
 import java.util.*;
 public class ConnectedCompont {
     public static class Edge {
