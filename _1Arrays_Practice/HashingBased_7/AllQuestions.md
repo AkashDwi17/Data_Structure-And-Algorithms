@@ -52,7 +52,7 @@ Output: true
 
 8️⃣ Contains Duplicate III
 
-|nums[i] - nums[j]| ≤ t and |i - j| ≤ k
+|nums[i] - nums[j]| ≤ t and |i - j| ≤   k
 
 Input: nums=[1,5,9,1], k=2, t=3
 Output: false
