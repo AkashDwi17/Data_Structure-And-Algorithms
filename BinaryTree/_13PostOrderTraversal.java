@@ -1,6 +1,6 @@
 package BinaryTree;
 
-public class _13InOrderTraversal {
+public class _13PostOrderTraversal {
     public static class Node{
         int data;
         Node left;
