@@ -1,7 +1,16 @@
 package BinarySearchTree;
 
 public class _4PrintInRange {
-
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
+        public Node (int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
 
     // Print In range
     public static void printInRange (Node root, int k1, int k2){
