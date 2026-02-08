@@ -1,4 +1,4 @@
-package Sorting_Algorithm;
+ package Sorting_Algorithm;
 
 public class QuickSort {
 

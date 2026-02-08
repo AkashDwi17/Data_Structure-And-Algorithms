@@ -1,0 +1,25 @@
+🧩 SCENARIO 5: INTERFACE vs ABSTRACT CLASS (TRICKY)
+
+Problem
+
+You are designing a Vehicle system.
+
+All vehicles have start() and stop()
+
+Some vehicles have fuelType()
+
+Some vehicles are Electric
+
+Some are Manual
+
+Future vehicles are unknown
+
+🎯 Interviewer asks:
+
+Interface or abstract class — why?
+
+Where will you use default methods?
+
+How do you avoid diamond problem?
+
+How does this design support future extension?

@@ -24,7 +24,7 @@ public class ConstructPrefixSumArray {
 
     // ITS TIME COMPLEXITY IS O(n) and SPACE COMPLEXITY IS O(1)
     public static void pref1(int arr[]){
-        int k = 0;
+ 
         int sum = 0;
         for (int i=0; i<arr.length; i++){
             sum += arr[i];

@@ -1,0 +1,25 @@
+🧩 SCENARIO 2: EMPLOYEE ACCESS CONTROL (ABSTRACTION + ENCAPSULATION)
+
+Problem
+
+In a company system:
+
+Employee has basic details.
+
+Manager can approve leaves.
+
+HR can approve leaves and terminate employees.
+
+Intern has no approval rights.
+
+🎯 Interviewer asks:
+
+How will you prevent unauthorized access?
+
+Where will you use abstraction?
+
+How will you avoid tight coupling?
+
+What happens if tomorrow TeamLead role is added?
+
+📝 Explain + optional code.

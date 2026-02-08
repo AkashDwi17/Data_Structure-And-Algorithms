@@ -1,0 +1,41 @@
+🔥 ROUND 1 – REAL INTERVIEW SCENARIO QUESTIONS (OOPs)
+🧩 SCENARIO 1: PAYMENT SYSTEM (CLASS DESIGN + POLYMORPHISM)
+
+Problem
+
+You are working on an e-commerce system.
+
+There are different payment methods:
+
+Credit Card
+
+UPI
+
+Net Banking
+
+All payments:
+
+validate details
+
+process payment
+
+generate receipt
+
+But each payment method has different validation and processing logic.
+
+🎯 Interviewer asks:
+
+How will you design this using OOP principles?
+
+Which OOP concepts are you applying and why?
+
+How will your design follow Open-Closed Principle?
+
+Write class structure (code or pseudo-code).
+
+⚠️ Constraint:
+Tomorrow company adds CryptoPayment.
+👉 You should NOT modify existing classes.
+
+📝 Your turn
+Explain design + code.

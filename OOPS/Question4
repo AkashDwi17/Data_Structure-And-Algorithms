@@ -1,0 +1,105 @@
+🔥 MASTER INTERVIEW QUESTION – INHERITANCE (REAL-WORLD + TRAPS)
+🧩 SCENARIO: NOTIFICATION SYSTEM
+
+You are working on a large-scale notification system used by multiple applications.
+
+There are different types of notifications:
+
+Email Notification
+
+SMS Notification
+
+Push Notification
+
+All notifications:
+
+have a recipient
+
+have a message
+
+can be sent
+
+can be logged
+
+But:
+
+Email needs subject
+
+SMS has character limit
+
+Push notification has device token
+
+🎯 INTERVIEWER QUESTIONS (YOU MUST ANSWER ALL)
+1️⃣ BASE DESIGN (INHERITANCE)
+
+How will you design the base Notification class?
+
+What should be common in parent?
+
+What should be forced on child classes?
+
+👉 Write class structure (Java / pseudo-code).
+
+2️⃣ OVERRIDING vs HIDING (TRAP ⚠️)
+class Notification {
+    void send() {
+        System.out.println("Sending notification");
+    }
+
+    static void log() {
+        System.out.println("Logging notification");
+    }
+}
+
+class EmailNotification extends Notification {
+    void send() {
+        System.out.println("Sending email");
+    }
+
+    static void log() {
+        System.out.println("Logging email");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Notification n = new EmailNotification();
+        n.send();
+        n.log();
+    }
+}
+
+
+👉 What will be the output and WHY?
+Explain like an interviewer expects (compile time vs runtime).
+
+3️⃣ final KEYWORD (DESIGN THINKING)
+
+Which method (if any) should be marked final?
+
+Why would marking send() as final be a bad design here?
+
+Where does final actually make sense?
+
+4️⃣ LISKOV SUBSTITUTION PRINCIPLE (ADVANCED)
+
+Interviewers love this 👇
+
+Can EmailNotification be safely replaced by Notification everywhere?
+
+Give one example where LSP can be broken in this system.
+
+How would you fix it?
+
+5️⃣ REAL EXPERIENCE QUESTION (3+ YEARS LEVEL)
+
+“Inheritance is often misused.
+When would you avoid inheritance here and use composition instead?”
+
+Answer with:
+
+one real scenario
+
+one design reason
+
+one performance/maintenance reason
