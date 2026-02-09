@@ -5,27 +5,41 @@ public class PairSumInSortedAndRotated {
     public static void pairSumInSortedAndRotated (ArrayList<Integer> list, int target){
         int bp = -1;
         int n = list.size();
-        for (int i=0; i<list.size(); i++){
-            if (list.get(i) > list.get(i+1)){
+
+        for (int i = 0; i < n - 1; i++) {
+            if (list.get(i) > list.get(i + 1)) {
                 bp = i;
                 break;
             }
         }
-        int si = bp+1;
-        int ei = bp;
-        while (si != ei){ //
-            if (list.get(si)+list.get(ei) == target){
-                System.out.println(si+","+ei);
+
+        //  handle non-rotated array
+        if (bp == -1) {
+            bp = n - 1;
+        }
+
+        int lp = (bp + 1) % n;
+        int rp = bp;
+
+        while (lp != rp) {
+            int sum = list.get(lp) + list.get(rp);
+
+            if (sum == target) {
+                System.out.println(list.get(lp) + " , " + list.get(rp));
                 return;
             }
-            if (list.get(si)+list.get(ei) < target){
-                si = (si+1)%n;
-            }else{
-                ei = (n+ei-1)%n;
+
+            if (sum < target) {
+                lp = (lp + 1) % n;
+            } else {
+                rp = (rp + n - 1) % n;
             }
         }
-        System.out.println("Pair Not Found!");
+        System.out.println("Not FOUND!");
     }
+
+
+
     public static void main(String[] args) {
         ArrayList <Integer> list = new ArrayList<>();
         list.add(11);
