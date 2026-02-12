@@ -1,63 +1,58 @@
 package Queue;
 
 public class QueueUsingArray {
-    public static class Queue {
+
+    static class Queue {
         int arr[];
         int size;
+        int front;
         int rear;
 
-        public Queue (int n){
-            this.arr = new int[n];
-            this.size = n;
-            this.rear = -1;
+        Queue(int n) {
+            arr = new int[n];
+            size = n;
+            front = -1;
+            rear = -1;
         }
 
-        // Is Empty
-        public boolean isEmpty(){
-            return rear == -1;
+        boolean isEmpty() {
+            return front == -1 || front > rear;
         }
 
-        // Add in Queue
-        public void add (int data){
-            if (rear == size-1){
-                System.out.println("Queue Is Full");
+        void add(int data) {
+            if (rear == size - 1) {
+                System.out.println("Queue is full");
                 return;
             }
-            rear = rear+1;
-            arr[rear] = data;            
+            if (front == -1) {
+                front = 0;
+            }
+            rear++;
+            arr[rear] = data;
         }
 
-        // Remove in Queue
-        public int remove(){
-            if (isEmpty()){
+        int remove() {
+            if (isEmpty()) {
                 return -1;
             }
-            int top = arr[0];
-            for (int i=0; i<=rear; i++){
-                arr[i] = arr[i+1];
-            }
-            rear = rear-1;
-            return top;
+            int result = arr[front];
+            front++;
+            return result;
         }
 
-        // Peek in Queue
-        public int peek(){
-            if (isEmpty()){
+        int peek() {
+            if (isEmpty()) {
                 return -1;
             }
-            return arr[0];
+            return arr[front];
         }
     }
-    
-    public static void main(String[] args) {
-        Queue q = new Queue(5);
-        q.add(1);
-        q.add(2);
-        q.add(3);
 
-        while (!q.isEmpty()){
-            System.out.println(q.peek());
-            q.remove();
-        }
+    public static void main(String args[]) {
+        Queue q = new Queue(5);
+        q.add(10);
+        q.add(20);
+        System.out.println(q.remove());
+        System.out.println(q.peek());
     }
 }
