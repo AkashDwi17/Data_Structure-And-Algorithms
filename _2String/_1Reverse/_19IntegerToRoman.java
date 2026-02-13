@@ -1,0 +1,46 @@
+package _2String._1Reverse;
+
+// 1️⃣6️⃣ Integer to Roman
+// Input
+// num = 1994
+// Output
+// "MCMXCIV"
+
+public class _19IntegerToRoman {
+
+    public static String intToRoman(int num) {
+
+        int[] values = {
+            1000, 900, 500, 400,
+            100, 90, 50, 40,
+            10, 9, 5, 4, 1
+        };
+
+        String[] symbols = {
+            "M", "CM", "D", "CD",
+            "C", "XC", "L", "XL",
+            "X", "IX", "V", "IV", "I"
+        };
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < values.length; i++) {
+
+            while (num >= values[i]) {
+                result.append(symbols[i]);
+                num -= values[i];
+            }
+        }
+
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+
+        int num = 1994;
+        String result = intToRoman(num);
+
+        System.out.println("Input : " + num);
+        System.out.println("Output: " + result);
+    }
+}
