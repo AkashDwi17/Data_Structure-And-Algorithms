@@ -41,6 +41,8 @@ public class _3ReverseEachWord {
 🧠 Approach 2 (Without split) – Interview Preferred
 
 Using manual traversal (better for interviews)
+// s = "I love coding"
+// "I evol gnidoc"
 
 public static String reverse(String s) {
 

@@ -17,7 +17,6 @@ public class _1reverseString {
     for (int i = str.length() - 1; i >= 0; i--) {
         result += str.charAt(i);
     }
-
     return result;
 }
 
