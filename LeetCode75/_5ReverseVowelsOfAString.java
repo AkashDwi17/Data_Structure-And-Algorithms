@@ -11,7 +11,7 @@ package LeetCode75;
 // Example 2:
 // Input: s = "leetcode"
 // Output: "leotcede"
-
+ 
 public class _5ReverseVowelsOfAString {
     public static boolean isVowel (char ch){
         return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
