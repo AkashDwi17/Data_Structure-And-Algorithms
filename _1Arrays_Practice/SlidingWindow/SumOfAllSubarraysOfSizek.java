@@ -9,7 +9,6 @@ public class SumOfAllSubarraysOfSizek {
     public static List <Integer> sumOfAllSubarrays (int arr[], int k){
         List <Integer> list = new LinkedList<>();
         int sum = 0;
-        // list.add(sum);
         for (int i=0; i<k; i++){
             sum += arr[i];
         }

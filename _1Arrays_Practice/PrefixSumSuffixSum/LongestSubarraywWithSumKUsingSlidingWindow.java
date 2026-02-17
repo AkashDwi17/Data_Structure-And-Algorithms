@@ -23,7 +23,6 @@ public class LongestSubarraywWithSumKUsingSlidingWindow {
             if (sum == k) {
                 maxLen = Math.max(maxLen, right - left + 1);
             }
-
             right++;
         }
 

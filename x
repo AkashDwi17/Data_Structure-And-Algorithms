@@ -1,15 +1,18 @@
-import java.util.concurrent.*;
+public static String reverseWordsInAString(String str) {
 
-public class ThreadPoolDemo {
-    public static void main(String[] args) {
-        ExecutorService service = Executors.newFixedThreadPool(3);
+    str = str.trim();
 
-        for(int i=1; i<=5; i++){
-            int taskId = i;
-            service.submit(() -> {
-                System.out.println("Task " + taskId + " executed by " + Thread.currentThread().getName());
-            });
+    String[] arr = str.split("\\s+");
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = arr.length - 1; i >= 0; i--) {
+        sb.append(arr[i]);
+
+        if (i != 0) {
+            sb.append(" ");
         }
-        service.shutdown();
     }
+
+    return sb.toString();
 }

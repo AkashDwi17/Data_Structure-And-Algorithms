@@ -6,7 +6,7 @@ import java.util.*;
 public class AllowMax2Occurrences {
     public static void max2Occ (int arr[]){
 
-        Arrays .sort (arr);
+        Arrays.sort (arr);
         int i = 0;
         for (int j=0; j<arr.length; j++){
             if (i < 2 || arr[j] != arr[i-2]){

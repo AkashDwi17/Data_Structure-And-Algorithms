@@ -1,4 +1,4 @@
-package LeetCode75;
+package LeetCode75.Array_String;
 // Example 1:
 
 // Input: word1 = "abc", word2 = "pqr"

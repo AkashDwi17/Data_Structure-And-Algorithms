@@ -30,13 +30,13 @@ public class _6ReverseWordsInPlace {
         reverse(arr, 0, n - 1);
 
         // Step 2: Reverse each word
-        int start = 0;
+        int si = 0;
 
-        for (int end = 0; end <= n; end++) {
+        for (int ei = 0; ei <= n; ei++) {
 
-            if (end == n || arr[end] == ' ') {
-                reverse(arr, start, end - 1);
-                start = end + 1;
+            if (ei == n || arr[ei] == ' ') {
+                reverse(arr, si, ei - 1);
+                si = ei + 1;
             }
         }
     }
