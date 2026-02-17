@@ -1,7 +1,7 @@
 package LeetCode75;
 import java.util.*;
 
-public class _2KidsWithTheGreatestNumberOfCandies {
+public class _3KidsWithTheGreatestNumberOfCandies {
 
     public static ArrayList<Boolean> kidsWithTheGreatestNumberOfCandies(int arr[], int k) {
 
