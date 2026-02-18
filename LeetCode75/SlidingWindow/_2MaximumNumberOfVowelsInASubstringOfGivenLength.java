@@ -17,23 +17,23 @@ package LeetCode75.SlidingWindow;
 // Explanation: "lee", "eet" and "ode" contain 2 vowels.
 
 public class _2MaximumNumberOfVowelsInASubstringOfGivenLength {
-    
-    public static boolean  isVowel (char ch){
+
+    public static boolean isVowel (char ch){
         return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
     }
+    
     public static int maxVowel (String str, int k){
         int count = 0;
         int maxCount = 0;
-
         for (int i=0; i<k; i++){
-            if (isVowel(str.charAt(i))){
+            if (isVowel (str.charAt(i))){
                 count ++;
             }
         }
         maxCount = count;
 
-        for (int i = k; i<str.length(); i++){
-            if (isVowel (str.charAt(i-k))){
+        for (int i=k; i<str.length(); i++){
+            if (isVowel(str.charAt(i-k))){
                 count --;
             }
             if (isVowel(str.charAt(i))){
