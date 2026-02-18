@@ -27,3 +27,6 @@ public class _1MaximumAverageSubarray {
         System.out.println(maximumAverageSubarray(arr, k));
     }
 }
+
+
+
