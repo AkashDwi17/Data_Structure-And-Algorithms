@@ -1,18 +1,32 @@
-public static String reverseWordsInAString(String str) {
+class Solution {
 
-    str = str.trim();
+    public int longestOnes(int[] nums, int k) {
 
-    String[] arr = str.split("\\s+");
+        int left = 0;
+        int right = 0;
+        int zeroCount = 0;
+        int maxLen = 0;
 
-    StringBuilder sb = new StringBuilder();
+        while (right < nums.length) {
 
-    for (int i = arr.length - 1; i >= 0; i--) {
-        sb.append(arr[i]);
+            if (nums[right] == 0) {
+                zeroCount++;
+            }
 
-        if (i != 0) {
-            sb.append(" ");
+            while (zeroCount > k) {
+
+                if (nums[left] == 0) {
+                    zeroCount--;
+                }
+
+                left++;
+            }
+
+            maxLen = Math.max(maxLen, right - left + 1);
+
+            right++;
         }
-    }
 
-    return sb.toString();
+        return maxLen;
+    }
 }
