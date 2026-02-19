@@ -29,15 +29,67 @@ public class DijkstraAlgo {
 
         graph[4].add(new Edge(4, 3, 2));
         graph[4].add(new Edge(4, 5, 5));
+        // for (int i=0; i<graph[1].size(); i++){
+        //     Edge e = graph[1].get(i);
+        //     System.out.print  (e.dest);
+        // }
+    }
 
-        for (int i=0; i<graph[1].size(); i++){
-            Edge e = graph[1].get(i);
-            System.out.print  (e.dest);
+    public static class Pair implements Comparable <Pair>{
+        int n;
+        int path;
+        public Pair (int n, int path){
+            this.n = n;
+            this.path = path;
+        }
+        @Override
+        public int compareTo (Pair p2){
+            return this.path - p2.path;
         }
     }
+
+    public static void dijkstra(ArrayList<Edge> graph[], int src) {
+    int dist[] = new int[graph.length];
+
+    for (int i = 0; i < graph.length; i++) {
+        dist[i] = Integer.MAX_VALUE;
+    }
+    dist[src] = 0; 
+
+    boolean vis[] = new boolean[graph.length];
+    PriorityQueue<Pair> pq = new PriorityQueue<>();
+    pq.add(new Pair(src, 0));
+
+    while (!pq.isEmpty()) {
+        Pair curr = pq.remove();
+
+        if (!vis[curr.n]) {
+            vis[curr.n] = true;
+
+            for (int i = 0; i < graph[curr.n].size(); i++) {
+                Edge e = graph[curr.n].get(i);
+
+                int u = e.src;
+                int v = e.dest;
+                int w = e.wt;
+
+                if (dist[u] + w < dist[v]) {
+                    dist[v] = dist[u] + w;
+                    pq.add(new Pair(v, dist[v])); 
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < dist.length; i++) {
+        System.out.print(dist[i] + " ");
+    }
+}
 
     public static void main (String args[]){
         ArrayList<Edge> graph[] = new ArrayList[6];
         createGraph(graph);
+        int src = 0;
+        dijkstra(graph, src);
     }
 }
