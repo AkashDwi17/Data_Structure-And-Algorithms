@@ -9,21 +9,25 @@ import java.util.*;
 // 3
 
 public class _15LongestSubstringWithoutRepeatingCharacters {
+
     public static int lengthOfLongestSubstring(String s) {
 
         Set<Character> set = new HashSet<>();
+
         int left = 0;
+        int right = 0;
         int maxLen = 0;
 
-        for (int right = 0; right < s.length(); right++) {
+        while (right < s.length()) {
 
-            while (set.contains(s.charAt(right))) {
+            if (!set.contains(s.charAt(right))) {
+                set.add(s.charAt(right));
+                maxLen = Math.max(maxLen, right - left + 1);
+                right++;
+            } else {
                 set.remove(s.charAt(left));
                 left++;
             }
-
-            set.add(s.charAt(right));
-            maxLen = Math.max(maxLen, right - left + 1);
         }
 
         return maxLen;
@@ -36,7 +40,13 @@ public class _15LongestSubstringWithoutRepeatingCharacters {
 }
 
 
+/*
+    package _2String._1Reverse;
+import java.util.*;
 
+
+
+*/
 
     
 

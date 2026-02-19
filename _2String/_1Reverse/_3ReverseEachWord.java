@@ -46,7 +46,7 @@ Using manual traversal (better for interviews)
 
 public static String reverse(String s) {
 
-    StringBuilder result = new StringBuilder();
+    StringBuilder sb = new StringBuilder();
     StringBuilder word = new StringBuilder();
 
     for (int i = 0; i < s.length(); i++) {
@@ -54,15 +54,15 @@ public static String reverse(String s) {
         if (s.charAt(i) != ' ') {
             word.append(s.charAt(i));
         } else {
-            result.append(word.reverse()).append(" ");
+            sb.append(word.reverse()).append(" ");
             word.setLength(0);   // clear word
         }
     }
 
     // reverse last word
-    result.append(word.reverse());
+    sb.append(word.reverse());
 
-    return result.toString();
+    return sb.toString();
 }
 
 */
