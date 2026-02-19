@@ -35,6 +35,7 @@ public class DijkstraAlgo {
         // }
     }
 
+    
     public static class Pair implements Comparable <Pair>{
         int n;
         int path;
