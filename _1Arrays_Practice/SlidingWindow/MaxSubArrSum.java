@@ -4,6 +4,8 @@ package SlidingWindow;
 // Input: arr = [2, 1, 5, 1, 3, 2], k = 3
 // Output: 9 → (5+1+3)
 
+// Explanation  below
+
 public class MaxSubArrSum {
     
     public static int maxSubArrSum (int arr[], int k){
@@ -26,3 +28,9 @@ public class MaxSubArrSum {
         System.out.println(maxSubArrSum(arr, 3));
     }
 }
+
+// - Subarrays of size k = 3:
+// - [2, 1, 5] → sum = 8
+// - [1, 5, 1] → sum = 7
+// - [5, 1, 3] → sum = 9 ✅
+// - 
