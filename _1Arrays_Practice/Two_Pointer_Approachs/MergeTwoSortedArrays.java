@@ -21,4 +21,3 @@ public class MergeTwoSortedArrays {
         merge2Array(nums1, nums2);
     }
 }
--['/']
