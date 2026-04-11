@@ -54,7 +54,7 @@ public class _5Sudoku {
             }
         }
         return false;
-    }
+    }   
 
     public static void printSudoku (int sudoku[][]){
         for (int i=0; i<sudoku.length; i++){
